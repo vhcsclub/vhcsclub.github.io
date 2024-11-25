@@ -47,11 +47,36 @@
           color: #000; /* Default text color to black */
       }
 
+      /* Text Color Classes */
+      .white-text {
+          color: #ffffff;
+      }
+
+      .red-text {
+          color: #ff0000; /* Red */
+      }
+
+      .blue-text {
+          color: #0000ff; /* Blue */
+      }
+
+      .green-text {
+          color: #008000; /* Green */
+      }
+
+      .orange-text {
+          color: #ffa500; /* Orange */
+      }
+
+      .purple-text {
+          color: #800080; /* Purple */
+      }
+
       /* Section Titles */
       h2 {
           font-size: 2.5em;
           margin-bottom: 20px;
-          color: #000; /* Ensure section titles are black */
+          color: #000; /* Ensure section titles are black by default */
       }
 
       h3 {
@@ -142,19 +167,19 @@
       }
 
       #sponsors h2 {
-          color: #000; /* Changed to black */
+          color: #ffffff; /* Changed to white */
       }
 
       /* Previous Winners Carousel Section */
       #previous-winners {
           padding: 40px 20px;
           text-align: center;
-          background-color: #444; /* Slightly lighter dark background */
-          color: #000; /* Changed to black */
+          background-color: #333; /* Changed to dark background for white text */
+          color: #fff; /* Changed to white */
       }
 
       #previous-winners h2 {
-          color: #000; /* Ensuring heading is black */
+          color: #ffffff; /* Changed to white */
       }
 
       /* Rubric Section */
@@ -213,10 +238,18 @@
           margin: 0 auto;
           position: relative;
           padding: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
       }
 
       .timeline-item {
-          margin-bottom: 40px;
+          width: 80%;
+          background-color: #f9f9f9;
+          padding: 20px;
+          margin-bottom: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
           opacity: 0;
           transform: translateY(50px);
           transition: all 0.6s ease;
@@ -380,7 +413,7 @@
    ================================================== -->
    <section id="sponsors" data-aos="fade-up">
 
-      <h2 data-aos="fade-right">Our Sponsors</h2>
+      <h2 data-aos="fade-right" class="white-text">Our Sponsors</h2>
 
       <div class="sponsors-carousel">
          <div data-aos="zoom-in"><img src="images/sponsors/sponsor1.png" alt="Sponsor 1"></div>
@@ -395,9 +428,9 @@
 
    <!-- Previous Winners Carousel Section
    ================================================== -->
-   <section id="previous-winners" data-aos="fade-up">
+   <section id="previous-winners" data-aos="fade-up" style="background-color: #333; color: #fff;">
 
-      <h2 data-aos="fade-right">Previous Winners</h2>
+      <h2 data-aos="fade-right" class="white-text">Past Winners</h2>
 
       <div class="previous-winners-carousel">
          <div data-aos="flip-left"><img src="images/winners/winner1.png" alt="Winner 1"></div>
@@ -407,21 +440,7 @@
          <div data-aos="flip-left"><img src="images/winners/winner5.png" alt="Winner 5"></div>
       </div>
 
-      <!-- Embed Google Slides Slideshow -->
-      <div class="google-slideshow" data-aos="fade-up" data-aos-delay="200" style="margin-top: 50px;">
-         <h2 data-aos="fade-right">Past Winners</h2>
-         <div class="responsive-iframe">
-            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTAYjVs71ZYlfWxfANHGHv9SgPzifkLpwRkw1oOZku5nHifTKs3qVenPQU05RnLNCAxhKmlSsRKDgXQ/embed?start=false&loop=true&delayms=2000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-         </div>
-         <!-- 
-            Instructions to set up Google Slides Slideshow:
-            1. Create your presentation in Google Slides.
-            2. Click on 'File' > 'Publish to the web'.
-            3. In the dialog, select 'Embed' and set the slide size, auto-advance timing (e.g., every 3 seconds).
-            4. Click 'Publish' and confirm.
-            5. Copy the generated embed link and replace the iframe src above.
-         -->
-      </div>
+      <!-- The "Past Winners" Google Slides Slideshow section has been deleted as per your request -->
 
    </section> <!-- end previous-winners -->
 
