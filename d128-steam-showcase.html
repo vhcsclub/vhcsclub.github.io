@@ -238,6 +238,22 @@
               padding: 60px 10px;
           }
       }
+
+      /* Responsive Iframe */
+      .responsive-iframe {
+          position: relative;
+          padding-bottom: 56.25%; /* 16:9 aspect ratio */
+          padding-top: 25px;
+          height: 0;
+      }
+
+      .responsive-iframe iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+      }
    </style>
 
 </head>
@@ -349,8 +365,8 @@
       <!-- Embed Google Slides Slideshow -->
       <div class="google-slideshow" data-aos="fade-up" data-aos-delay="200" style="margin-top: 50px;">
          <h2>Project Highlights</h2>
-         <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-            <iframe src="https://docs.google.com/presentation/d/e/1lf62qUs3I-GqyJfvkhum77cv8gnj0VxHgGkwavlnA-M/embed?start=true&loop=true&delayms=3000" frameborder="0" style="position: absolute; top:0; left: 0; width: 100%; height: 100%;" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+         <div class="responsive-iframe">
+            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTAYjVs71ZYlfWxfANHGHv9SgPzifkLpwRkw1oOZku5nHifTKs3qVenPQU05RnLNCAxhKmlSsRKDgXQ/embed?start=false&loop=true&delayms=2000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
          </div>
          <!-- 
             Instructions to set up Google Slides Slideshow:
@@ -358,7 +374,7 @@
             2. Click on 'File' > 'Publish to the web'.
             3. In the dialog, select 'Embed' and set the slide size, auto-advance timing (e.g., every 3 seconds).
             4. Click 'Publish' and confirm.
-            5. Copy the generated embed link and replace 'YOUR_GOOGLE_SLIDES_EMBED_LINK' above.
+            5. Copy the generated embed link and replace the iframe src above.
          -->
       </div>
 
@@ -559,3 +575,4 @@
 </body>
 
 </html>
+
