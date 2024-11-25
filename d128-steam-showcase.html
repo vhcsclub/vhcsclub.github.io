@@ -109,7 +109,7 @@
           background-size: 400% 400%;
           animation: gradientBG 15s ease infinite;
           text-align: center;
-          color: #fff;
+          color: #000; /* Changed to black */
       }
 
       /* Sponsors Carousel Section */
@@ -125,7 +125,7 @@
           padding: 40px 20px;
           text-align: center;
           background-color: #444; /* Slightly lighter dark background */
-          color: #fff;
+          color: #000; /* Changed to black */
       }
 
       /* Rubric Section */
@@ -136,7 +136,7 @@
           background-size: 400% 400%;
           animation: gradientBG 25s ease infinite;
           text-align: center;
-          color: #000;
+          color: #000; /* Changed to black */
       }
 
       /* Prizes Section */
@@ -147,7 +147,7 @@
           background-size: 400% 400%;
           animation: gradientBG 20s ease infinite;
           text-align: center;
-          color: #000;
+          color: #000; /* Changed to black */
       }
 
       /* Timeline Section */
@@ -158,13 +158,13 @@
           background-size: 400% 400%;
           animation: gradientBG 20s ease infinite;
           text-align: center;
-          color: #fff;
+          color: #000; /* Changed to black */
       }
 
       #timeline h2 {
           margin-bottom: 30px;
           font-size: 28px;
-          color: #fff;
+          color: #000; /* Changed to black */
       }
 
       #timeline .timeline-container {
@@ -188,11 +188,25 @@
       .timeline-item h3 {
           font-size: 24px;
           margin-bottom: 10px;
+          color: #000; /* Changed to black */
       }
 
       .timeline-item p {
           font-size: 18px;
           line-height: 1.6;
+          color: #000; /* Changed to black */
+      }
+
+      /* Rubric Content Adjustments */
+      #rubric .rubric-content ul {
+          list-style: none; /* Removed bullets */
+          padding: 0;
+          margin: 20px auto;
+          font-size: 20px; /* Increased text size */
+      }
+
+      #rubric .rubric-content ul li {
+          margin-bottom: 10px;
       }
 
       /* Moving Gradient Animation */
@@ -219,11 +233,14 @@
           #previous-winners h2,
           #timeline h2 {
               font-size: 24px;
+              color: #000; /* Ensure headings are black on smaller screens */
           }
 
           .info-section p,
+          #rubric .rubric-content ul,
           #timeline .timeline-item p {
               font-size: 16px;
+              color: #000; /* Ensure paragraph text is black on smaller screens */
           }
 
           .sponsors-carousel img,
@@ -308,7 +325,7 @@
       
       <div class="buttons" data-aos="fade-up" data-aos-delay="200">
          <a href="https://docs.google.com/document/d/1rHf-iSGxhXi6ljKmXKSeZcGTl7UVnunloWEk5_VFcr0/edit?usp=sharing" target="_blank">Learn More</a>
-         <a href="https://tinyurl.com/steam-register2025" target="_blank">Interest Form</a>
+         <a href="#previous-winners" target="_self">Previous Winners</a>
       </div>
 
    </section> <!-- end hero-d128 -->
@@ -318,13 +335,13 @@
    ================================================== -->
    <section id="introduction" data-aos="fade-up">
 
-      <h2>Show us your STEAM skills.</h2>
+      <h2 data-aos="fade-right">Show us your STEAM skills.</h2>
 
-      <p>
+      <p data-aos="fade-left">
          Whether that be in Science, Tech, Engineering, Entrepreneurship, Equity, Arts, or Math, now's your chance to get rewarded for solving real-world problems. You can even use previous projects!
       </p>
 
-      <p>
+      <p data-aos="fade-left">
          Impress and win big. Open to all VHHS and LHS students! Your work will be evaluated by local businesses. The highest-rated projects in each division will win the best prizes.
       </p>
 
@@ -335,14 +352,14 @@
    ================================================== -->
    <section id="sponsors" data-aos="fade-up">
 
-      <h2>Our Sponsors</h2>
+      <h2 data-aos="fade-right">Our Sponsors</h2>
 
       <div class="sponsors-carousel">
-         <div><img src="images/sponsors/sponsor1.png" alt="Sponsor 1"></div>
-         <div><img src="images/sponsors/sponsor2.png" alt="Sponsor 2"></div>
-         <div><img src="images/sponsors/sponsor3.png" alt="Sponsor 3"></div>
-         <div><img src="images/sponsors/sponsor4.png" alt="Sponsor 4"></div>
-         <div><img src="images/sponsors/sponsor5.png" alt="Sponsor 5"></div>
+         <div data-aos="zoom-in"><img src="images/sponsors/sponsor1.png" alt="Sponsor 1"></div>
+         <div data-aos="zoom-in"><img src="images/sponsors/sponsor2.png" alt="Sponsor 2"></div>
+         <div data-aos="zoom-in"><img src="images/sponsors/sponsor3.png" alt="Sponsor 3"></div>
+         <div data-aos="zoom-in"><img src="images/sponsors/sponsor4.png" alt="Sponsor 4"></div>
+         <div data-aos="zoom-in"><img src="images/sponsors/sponsor5.png" alt="Sponsor 5"></div>
       </div>
 
    </section> <!-- end sponsors -->
@@ -352,19 +369,19 @@
    ================================================== -->
    <section id="previous-winners" data-aos="fade-up">
 
-      <h2>Previous Winners</h2>
+      <h2 data-aos="fade-right">Previous Winners</h2>
 
       <div class="previous-winners-carousel">
-         <div><img src="images/winners/winner1.png" alt="Winner 1"></div>
-         <div><img src="images/winners/winner2.png" alt="Winner 2"></div>
-         <div><img src="images/winners/winner3.png" alt="Winner 3"></div>
-         <div><img src="images/winners/winner4.png" alt="Winner 4"></div>
-         <div><img src="images/winners/winner5.png" alt="Winner 5"></div>
+         <div data-aos="flip-left"><img src="images/winners/winner1.png" alt="Winner 1"></div>
+         <div data-aos="flip-left"><img src="images/winners/winner2.png" alt="Winner 2"></div>
+         <div data-aos="flip-left"><img src="images/winners/winner3.png" alt="Winner 3"></div>
+         <div data-aos="flip-left"><img src="images/winners/winner4.png" alt="Winner 4"></div>
+         <div data-aos="flip-left"><img src="images/winners/winner5.png" alt="Winner 5"></div>
       </div>
 
       <!-- Embed Google Slides Slideshow -->
       <div class="google-slideshow" data-aos="fade-up" data-aos-delay="200" style="margin-top: 50px;">
-         <h2>Project Highlights</h2>
+         <h2 data-aos="fade-right">Past Winner</h2>
          <div class="responsive-iframe">
             <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTAYjVs71ZYlfWxfANHGHv9SgPzifkLpwRkw1oOZku5nHifTKs3qVenPQU05RnLNCAxhKmlSsRKDgXQ/embed?start=false&loop=true&delayms=2000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
          </div>
@@ -385,11 +402,11 @@
    ================================================== -->
    <section id="rubric" data-aos="fade-up">
 
-      <h2>Rubric</h2>
+      <h2 data-aos="fade-right">Rubric</h2>
 
-      <div class="rubric-content">
+      <div class="rubric-content" data-aos="fade-left">
          <p><strong>Judging:</strong> Done by business professionals from the respective industry.</p>
-         <ul style="text-align: left; display: inline-block;">
+         <ul>
             <li><strong>Identifying the problem (20pt):</strong> How pertinent is your problem?</li>
             <li><strong>The solution (30pt):</strong> How feasible and logical is your project?</li>
             <li><strong>Creativity / Innovation (20pt):</strong> How innovative and DARING is your project?</li>
@@ -405,9 +422,9 @@
    ================================================== -->
    <section id="prizes" data-aos="fade-up">
 
-      <h2>Prizes</h2>
+      <h2 data-aos="fade-right">Prizes</h2>
 
-      <p>
+      <p data-aos="fade-left">
          Coming soon but the top prize is a <strong>$500 scholarship</strong> and there are minimally <strong>$4000 worth of prizes!</strong>
       </p>
 
@@ -418,7 +435,7 @@
    ================================================== -->
    <section id="timeline" data-aos="fade-up">
 
-      <h2>Our Timeline</h2>
+      <h2 data-aos="fade-right">Our Timeline</h2>
 
       <div class="timeline-container">
          <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
@@ -467,7 +484,7 @@
                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
                Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
                nibh id elit. 
-               </p>	       
+               </p>	        
 
             </div>
 
@@ -575,4 +592,3 @@
 </body>
 
 </html>
-
