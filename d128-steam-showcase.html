@@ -112,31 +112,26 @@
           color: #fff;
       }
 
-      /* Sponsorship Invitation */
-      #sponsorship {
-          padding: 80px 20px;
-          /* Add moving gradient background */
-          background: linear-gradient(-45deg, #a8edea, #fed6e3, #a8edea, #fed6e3);
-          background-size: 400% 400%;
-          animation: gradientBG 20s ease infinite;
+      /* Sponsors Carousel Section */
+      #sponsors {
+          padding: 40px 20px;
           text-align: center;
-          color: #000;
+          background-color: #333; /* Dark background for contrast */
+          color: #fff;
       }
 
-      #sponsorship p {
-          font-size: 1.5em; /* Increased font size */
-          font-family: inherit; /* Ensure same font */
+      /* Previous Winners Carousel Section */
+      #previous-winners {
+          padding: 40px 20px;
+          text-align: center;
+          background-color: #444; /* Slightly lighter dark background */
+          color: #fff;
       }
 
-      #sponsorship a {
-          text-decoration: underline;
-          color: #000;
-      }
-
-      /* Rubric, Prizes, Q&A Sections */
-      .info-section {
+      /* Rubric Section */
+      #rubric {
           padding: 80px 20px;
-          /* Add moving gradient background */
+          /* Add moving gradient background matching #sponsorship */
           background: linear-gradient(-45deg, #d4fc79, #96e6a1, #d4fc79, #96e6a1);
           background-size: 400% 400%;
           animation: gradientBG 25s ease infinite;
@@ -144,51 +139,15 @@
           color: #000;
       }
 
-      .info-section h2 {
-          margin-bottom: 30px;
-          font-size: 28px;
-          color: #000;
-      }
-
-      .info-section p {
-          max-width: 800px;
-          margin: 0 auto;
-          font-size: 18px;
-          line-height: 1.6;
-          color: #000;
-      }
-
-      /* Carousels */
-      .sponsors-carousel img,
-      .judges-carousel img {
-          width: 100%;
-          height: auto;
-          padding: 15px;
-          background-color: #fff;
-          border-radius: 10px;
-      }
-
-      /* Centering text and adjusting spacing for Sponsors and Judges */
-      #sponsors h2,
-      #judges h2 {
+      /* Prizes Section */
+      #prizes {
+          padding: 80px 20px;
+          /* Add moving gradient background matching #rubric */
+          background: linear-gradient(-45deg, #a8edea, #fed6e3, #a8edea, #fed6e3);
+          background-size: 400% 400%;
+          animation: gradientBG 20s ease infinite;
           text-align: center;
-          margin-bottom: 40px;
-          font-size: 32px;
-          color: #fff;
-      }
-
-      #sponsors, #judges {
-          padding: 40px 20px;
-          text-align: center;
-      }
-
-      /* Adjust spacing between Sponsors and Judges */
-      #sponsors {
-          margin-bottom: 20px;
-      }
-
-      #judges {
-          margin-top: 20px;
+          color: #000;
       }
 
       /* Timeline Section */
@@ -211,10 +170,19 @@
       #timeline .timeline-container {
           max-width: 800px;
           margin: 0 auto;
+          position: relative;
       }
 
       .timeline-item {
           margin-bottom: 40px;
+          opacity: 0;
+          transform: translateY(50px);
+          transition: all 0.6s ease;
+      }
+
+      .timeline-item.active {
+          opacity: 1;
+          transform: translateY(0);
       }
 
       .timeline-item h3 {
@@ -234,17 +202,6 @@
           100% { background-position: 0% 50%; }
       }
 
-      /* Adjust general section spacing */
-      section {
-          margin-bottom: 60px;
-      }
-
-      /* Ensure carousels are centered */
-      .sponsors-carousel, .judges-carousel {
-          max-width: 1200px;
-          margin: 0 auto;
-      }
-
       /* Responsive Adjustments */
       @media (max-width: 768px) {
           #hero-d128 h1 {
@@ -259,7 +216,7 @@
 
           .info-section h2,
           #sponsors h2,
-          #judges h2,
+          #previous-winners h2,
           #timeline h2 {
               font-size: 24px;
           }
@@ -270,7 +227,8 @@
           }
 
           .sponsors-carousel img,
-          .judges-carousel img {
+          .judges-carousel img,
+          .previous-winners-carousel img {
               padding: 10px;
           }
 
@@ -281,7 +239,6 @@
               padding: 60px 10px;
           }
       }
-
    </style>
 
 </head>
@@ -336,7 +293,7 @@
       
       <div class="buttons" data-aos="fade-up" data-aos-delay="200">
          <a href="https://docs.google.com/document/d/1rHf-iSGxhXi6ljKmXKSeZcGTl7UVnunloWEk5_VFcr0/edit?usp=sharing" target="_blank">Learn More</a>
-         <a href="https://tinyurl.com/steam-register2025" target="_blank">Apply</a>
+         <a href="https://tinyurl.com/steam-register2025" target="_blank">Interest Form</a>
       </div>
 
    </section> <!-- end hero-d128 -->
@@ -376,71 +333,101 @@
    </section> <!-- end sponsors -->
 
 
-   <!-- Judges Carousel Section
+   <!-- Previous Winners Carousel Section
    ================================================== -->
-   <section id="judges" data-aos="fade-up">
+   <section id="previous-winners" data-aos="fade-up">
 
-      <h2>Our Judges</h2>
+      <h2>Previous Winners</h2>
 
-      <div class="judges-carousel">
-         <div><img src="images/judges/judge1.png" alt="Judge 1"></div>
-         <div><img src="images/judges/judge2.png" alt="Judge 2"></div>
-         <div><img src="images/judges/judge3.png" alt="Judge 3"></div>
-         <div><img src="images/judges/judge4.png" alt="Judge 4"></div>
-         <div><img src="images/judges/judge5.png" alt="Judge 5"></div>
+      <div class="previous-winners-carousel">
+         <div><img src="images/winners/winner1.png" alt="Winner 1"></div>
+         <div><img src="images/winners/winner2.png" alt="Winner 2"></div>
+         <div><img src="images/winners/winner3.png" alt="Winner 3"></div>
+         <div><img src="images/winners/winner4.png" alt="Winner 4"></div>
+         <div><img src="images/winners/winner5.png" alt="Winner 5"></div>
       </div>
 
-   </section> <!-- end judges -->
+      <!-- Embed Google Slides Slideshow -->
+      <div class="google-slideshow" data-aos="fade-up" data-aos-delay="200" style="margin-top: 50px;">
+         <h2>Project Highlights</h2>
+         <!-- Replace 'YOUR_GOOGLE_SLIDES_EMBED_LINK' with your actual embed link -->
+         <iframe src="https://docs.google.com/presentation/d/e/YOUR_GOOGLE_SLIDES_EMBED_LINK/embed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+         <!-- 
+            Instructions to set up Google Slides Slideshow:
+            1. Create your presentation in Google Slides.
+            2. Click on 'File' > 'Publish to the web'.
+            3. In the dialog, select 'Embed' and set the slide size, auto-advance timing (e.g., every 3 seconds).
+            4. Click 'Publish' and confirm.
+            5. Copy the generated embed link and replace 'YOUR_GOOGLE_SLIDES_EMBED_LINK' above.
+         -->
+      </div>
+
+   </section> <!-- end previous-winners -->
 
 
-   <!-- Sponsorship Invitation Section
+   <!-- Rubric Section
    ================================================== -->
-   <section id="sponsorship" data-aos="fade-up">
+   <section id="rubric" data-aos="fade-up">
+
+      <h2>Rubric</h2>
+
+      <div class="rubric-content">
+         <p><strong>Judging:</strong> Done by business professionals from the respective industry.</p>
+         <ul style="text-align: left; display: inline-block;">
+            <li><strong>Identifying the problem (20pt):</strong> How pertinent is your problem?</li>
+            <li><strong>The solution (30pt):</strong> How feasible and logical is your project?</li>
+            <li><strong>Creativity / Innovation (20pt):</strong> How innovative and DARING is your project?</li>
+            <li><strong>Fits theme (20pt):</strong> How well does your project fit the theme? (TBD)</li>
+            <li><strong>Presentation Quality (10pt):</strong> How professional and engaging is it?</li>
+         </ul>
+      </div>
+
+   </section> <!-- end rubric -->
+
+
+   <!-- Prizes Section
+   ================================================== -->
+   <section id="prizes" data-aos="fade-up">
+
+      <h2>Prizes</h2>
 
       <p>
-         Want to sponsor us? <a href="contact-us.html">Contact Us</a>
+         Coming soon but the top prize is a <strong>$500 scholarship</strong> and there are minimally <strong>$4000 worth of prizes!</strong>
       </p>
 
-   </section> <!-- end sponsorship -->
+   </section> <!-- end prizes -->
 
 
-   <!-- Animated Timeline Section
+   <!-- Timeline Section
    ================================================== -->
    <section id="timeline" data-aos="fade-up">
 
-      <h2>Our Journey</h2>
+      <h2>Our Timeline</h2>
 
       <div class="timeline-container">
-         <div class="timeline-item">
-            <h3>Coming Soon</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel mauris quam.</p>
+         <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+            <h3>Now</h3>
+            <p>Complete the interest form (So we know how many judges we need for each division).</p>
          </div>
-         <!-- Add more timeline items as needed -->
+         <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+            <h3>12/16 - 1/6</h3>
+            <p>Turn in submissions and up to 2-minute video showcasing your project.</p>
+         </div>
+         <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+            <h3>1/8</h3>
+            <p>The top 3-4 from each division will be asked to present their projects to judges on 1/10.</p>
+         </div>
+         <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+            <h3>1/10</h3>
+            <p>Period 4-6: VHHS presentations during lunch periods.</p>
+         </div>
+         <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
+            <h3>1/10</h3>
+            <p>End of 6th Period - Award Ceremony at VHHS.</p>
+         </div>
       </div>
 
    </section> <!-- end timeline -->
-
-
-   <!-- Rubric, Prizes, and Q&A Sections
-   ================================================== -->
-   <section id="info-sections">
-
-      <div class="info-section" data-aos="fade-up">
-         <h2>Rubric</h2>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel mauris quam.</p>
-      </div>
-
-      <div class="info-section" data-aos="fade-up">
-         <h2>Prizes</h2>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel mauris quam.</p>
-      </div>
-
-      <div class="info-section" data-aos="fade-up">
-         <h2>Q&A</h2>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel mauris quam.</p>
-      </div>
-
-   </section> <!-- end info-sections -->
 
 
    <!-- Footer
@@ -465,7 +452,7 @@
                Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
                nibh id elit. 
                </p>	        
-   
+
             </div>
 
          </div>           
@@ -543,12 +530,12 @@
          ]
        });
 
-       // Initialize Slick Carousel for Judges
-       $('.judges-carousel').slick({
+       // Initialize Slick Carousel for Previous Winners
+       $('.previous-winners-carousel').slick({
          slidesToShow: 3,
          slidesToScroll: 1,
          autoplay: true,
-         autoplaySpeed: 2500,
+         autoplaySpeed: 3000,
          arrows: false,
          dots: false,
          responsive: [
