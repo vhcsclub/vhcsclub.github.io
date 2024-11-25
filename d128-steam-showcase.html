@@ -51,11 +51,13 @@
       h2 {
           font-size: 2.5em;
           margin-bottom: 20px;
+          color: #000; /* Ensure section titles are black */
       }
 
       h3 {
           font-size: 2em;
           margin-bottom: 10px;
+          color: #000; /* Ensure timeline item titles are black */
       }
 
       /* Gradient Background for Hero Section replaced with image */
@@ -140,7 +142,7 @@
       }
 
       #sponsors h2 {
-          color: #fff; /* Keeping sponsors heading white for contrast */
+          color: #000; /* Changed to black */
       }
 
       /* Previous Winners Carousel Section */
@@ -246,6 +248,11 @@
 
       /* Responsive Adjustments */
       @media (max-width: 768px) {
+          h2 {
+              font-size: 2em;
+              color: #000; /* Ensure headings are black on smaller screens */
+          }
+
           #hero-d128 h1 {
               font-size: 2.5em;
           }
@@ -256,19 +263,12 @@
               margin: 0 10px;
           }
 
-          .info-section h2,
-          #sponsors h2,
-          #previous-winners h2,
-          #timeline h2 {
-              font-size: 2em;
-              color: #000; /* Ensure headings are black on smaller screens */
+          .rubric-content ul {
+              font-size: 1em;
           }
 
-          .info-section p,
-          #rubric .rubric-content ul,
-          #timeline .timeline-item p {
+          .timeline-item p {
               font-size: 1em;
-              color: #000; /* Ensure paragraph text is black on smaller screens */
           }
 
           .sponsors-carousel img,
