@@ -170,16 +170,36 @@
           color: #ffffff; /* Changed to white */
       }
 
-      /* Previous Winners Carousel Section */
+      /* Previous Winners Section with Embedded Google Slides */
       #previous-winners {
           padding: 40px 20px;
           text-align: center;
-          background-color: #333; /* Changed to dark background for white text */
-          color: #fff; /* Changed to white */
+          background-color: #333; /* Dark background for white text */
+          color: #fff;
       }
 
       #previous-winners h2 {
           color: #ffffff; /* Changed to white */
+          margin-bottom: 30px;
+      }
+
+      /* Responsive Iframe */
+      .responsive-iframe {
+          position: relative;
+          padding-bottom: 56.25%; /* 16:9 aspect ratio */
+          padding-top: 25px;
+          height: 0;
+          margin: 0 auto; /* Center the iframe */
+          max-width: 800px; /* Optional: set a max width */
+      }
+
+      .responsive-iframe iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: 0;
       }
 
       /* Rubric Section */
@@ -316,22 +336,6 @@
               padding: 60px 10px;
           }
       }
-
-      /* Responsive Iframe */
-      .responsive-iframe {
-          position: relative;
-          padding-bottom: 56.25%; /* 16:9 aspect ratio */
-          padding-top: 25px;
-          height: 0;
-      }
-
-      .responsive-iframe iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-      }
    </style>
 
 </head>
@@ -351,17 +355,17 @@
          <nav id="nav-wrap">         
             
             <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
-               <span class="menu-icon">Menu</span>
+            	<span class="menu-icon">Menu</span>
             </a>
-            <a class="mobile-btn" href="#" title="Hide navigation">
-               <span class="menu-icon">Menu</span>
-            </a>            
+        	<a class="mobile-btn" href="#" title="Hide navigation">
+        		<span class="menu-icon">Menu</span>
+        	</a>            
 
             <ul id="nav" class="nav">
-               <li><a class="smoothscroll" href="index.html#hero">Home</a></li>
-               <li><a href="girls-who-code.html">Girls Who Code</a></li>
+               <li><a class="smoothscroll" href="index.html#hero-d128">Home</a></li>
+               <li><a href="https://girlswhocode.com/" target="_blank">Girls Who Code</a></li>
                <li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
-               <li><a href="contact-us.html">Contact Us</a></li>
+			   <li><a href="contact-us.html">Contact Us</a></li>
 
             </ul> <!-- end #nav -->
 
@@ -426,21 +430,24 @@
    </section> <!-- end sponsors -->
 
 
-   <!-- Previous Winners Carousel Section
+   <!-- Previous Winners Section with Embedded Google Slides
    ================================================== -->
    <section id="previous-winners" data-aos="fade-up" style="background-color: #333; color: #fff;">
 
       <h2 data-aos="fade-right" class="white-text">Past Winners</h2>
 
-      <div class="previous-winners-carousel">
-         <div data-aos="flip-left"><img src="images/winners/winner1.png" alt="Winner 1"></div>
-         <div data-aos="flip-left"><img src="images/winners/winner2.png" alt="Winner 2"></div>
-         <div data-aos="flip-left"><img src="images/winners/winner3.png" alt="Winner 3"></div>
-         <div data-aos="flip-left"><img src="images/winners/winner4.png" alt="Winner 4"></div>
-         <div data-aos="flip-left"><img src="images/winners/winner5.png" alt="Winner 5"></div>
+      <div class="responsive-iframe" data-aos="fade-up" data-aos-delay="200">
+          <!-- Replace the src attribute value with your actual Google Slides embed URL -->
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTAYjVs71ZYlfWxfANHGHv9SgPzifkLpwRkw1oOZku5nHifTKs3qVenPQU05RnLNCAxhKmlSsRKDgXQ/embed?start=false&loop=true&delayms=2000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
       </div>
 
-      <!-- The "Past Winners" Google Slides Slideshow section has been deleted as per your request -->
+      <!-- Instructions to set up Google Slides Slideshow:
+          1. Create your presentation in Google Slides.
+          2. Click on 'File' > 'Publish to the web'.
+          3. In the dialog, select 'Embed' and set the slide size, auto-advance timing (e.g., every 3 seconds).
+          4. Click 'Publish' and confirm.
+          5. Copy the generated embed link and replace the iframe src above.
+      -->
 
    </section> <!-- end previous-winners -->
 
@@ -610,29 +617,7 @@
          ]
        });
 
-       // Initialize Slick Carousel for Previous Winners
-       $('.previous-winners-carousel').slick({
-         slidesToShow: 3,
-         slidesToScroll: 1,
-         autoplay: true,
-         autoplaySpeed: 3000,
-         arrows: false,
-         dots: false,
-         responsive: [
-           {
-             breakpoint: 1024,
-             settings: {
-               slidesToShow: 2,
-             }
-           },
-           {
-             breakpoint: 600,
-             settings: {
-               slidesToShow: 1,
-             }
-           }
-         ]
-       });
+       // Removed Slick Carousel initialization for Previous Winners as it's no longer a carousel
      });
    </script>
 
