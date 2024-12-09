@@ -186,6 +186,12 @@
           border: 1px solid #ddd; /* Optional: border around boxes */
           border-radius: 8px; /* Optional: rounded corners */
           overflow: hidden;
+          transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      .sponsors-carousel .carousel-item .image-box:hover {
+          transform: scale(1.05); /* Scale up slightly on hover */
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Add shadow on hover */
       }
 
       .sponsors-carousel .carousel-item .image-box img {
@@ -219,6 +225,11 @@
           height: 0;
           margin: 20px auto; /* Center the iframe and add vertical spacing */
           max-width: 100%; /* Ensure responsiveness */
+      }
+
+      /* Specific Class to Make Slideshow Smaller */
+      .smaller-slideshow {
+          max-width: 80%; /* Adjust the percentage as needed */
       }
 
       .responsive-iframe iframe {
@@ -465,27 +476,40 @@
          <!-- Sponsor Item 1 -->
          <div class="carousel-item" data-aos="zoom-in">
             <div class="image-box">
-               <img src="images/sponsor1.png" alt="Sponsor 1">
+               <!-- Replace # with the actual sponsor link -->
+               <a href="https://placeholder.com" target="_blank">
+                  <img src="images/sponsor1.png" alt="Sponsor 1">
+               </a>
             </div>
          </div>
          <!-- Sponsor Item 2 -->
          <div class="carousel-item" data-aos="zoom-in">
             <div class="image-box">
-               <img src="images/sponsor2.jpeg" alt="Sponsor 2">
+               <!-- Replace # with the actual sponsor link -->
+               <a href="https://placeholder.com" target="_blank">
+                  <img src="images/sponsor2.jpeg" alt="Sponsor 2">
+               </a>
             </div>
          </div>
          <!-- Sponsor Item 3 -->
          <div class="carousel-item" data-aos="zoom-in">
             <div class="image-box">
-               <img src="images/sponsor3.jpeg" alt="Sponsor 3">
+               <!-- Replace # with the actual sponsor link -->
+               <a href="https://placeholder.com" target="_blank">
+                  <img src="images/sponsor3.jpeg" alt="Sponsor 3">
+               </a>
             </div>
          </div>
          <!-- Sponsor Item 4 -->
          <div class="carousel-item" data-aos="zoom-in">
             <div class="image-box">
-               <img src="images/sponsor4.jpeg" alt="Sponsor 4">
+               <!-- Replace # with the actual sponsor link -->
+               <a href="https://placeholder.com" target="_blank">
+                  <img src="images/sponsor4.jpeg" alt="Sponsor 4">
+               </a>
             </div>
          </div>
+         <!-- Remove additional carousel items to limit to 4 sponsors -->
       </div>
 
    </section> <!-- end sponsors -->
@@ -497,9 +521,9 @@
 
       <h2 data-aos="fade-right" class="white-text">Past Winners</h2>
 
-      <div class="responsive-iframe" data-aos="fade-up" data-aos-delay="200">
+      <div class="responsive-iframe smaller-slideshow" data-aos="fade-up" data-aos-delay="200">
           <!-- Replace the src attribute value with your actual Google Slides embed URL -->
-          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTAYjVs71ZYlfWxfANHGHv9SgPzifkLpwRkw1oOZku5nHifTKs3qVenPQU05RnLNCAxhKmlSsRKDgXQ/embed?start=false&loop=false&delayms=2000" frameborder="0" width="1440" height="839" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTAYjVs71ZYlfWxfANHGHv9SgPzifkLpwRkw1oOZku5nHifTKs3qVenPQU05RnLNCAxhKmlSsRKDgXQ/embed?start=false&loop=false&delayms=2000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
       </div>
 
       <!-- 
@@ -597,11 +621,8 @@
 
                <div class="footer-logo"></div>
 
-               <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-               Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-               nibh id elit. 
-               </p>	       
-
+               <!-- Removed the unwanted Lorem Ipsum text -->
+               
             </div>
 
          </div>           
