@@ -232,6 +232,11 @@
           max-width: 80%; /* Adjust the percentage as needed */
       }
 
+      /* Specific Class to Make Video Smaller */
+      .smaller-video {
+          max-width: 60%; /* Adjust the percentage as needed */
+      }
+
       .responsive-iframe iframe {
           position: absolute;
           top: 0;
@@ -252,16 +257,45 @@
           color: #000; /* Changed to black */
       }
 
-      /* Rubric Content Adjustments */
-      #rubric .rubric-content ul {
-          list-style: none; /* Removed bullets */
-          padding: 0;
-          margin: 20px auto;
-          font-size: 1.2em; /* Increased text size */
+      /* Rubric Container */
+      .rubric-container {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
       }
 
-      #rubric .rubric-content ul li {
+      /* Rubric Item */
+      .rubric-item {
+          width: 80%;
+          background-color: #f9f9f9;
+          padding: 20px;
+          margin-bottom: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+          opacity: 0;
+          transform: translateY(50px);
+          transition: all 0.6s ease;
+      }
+
+      .rubric-item.active {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      .rubric-item h3 {
+          font-size: 2em; /* Slightly larger than body text */
           margin-bottom: 10px;
+          color: #000; /* Changed to black */
+      }
+
+      .rubric-item p {
+          font-size: 1.2em; /* Increased text size */
+          line-height: 1.6;
+          color: #000; /* Changed to black */
       }
 
       /* Prizes Section */
@@ -359,7 +393,8 @@
               font-size: 1em;
           }
 
-          .timeline-item p {
+          .timeline-item p,
+          .rubric-item p {
               font-size: 1em;
           }
 
@@ -371,8 +406,13 @@
           #introduction,
           #sponsorship,
           .info-section,
-          #timeline {
+          #timeline,
+          #rubric {
               padding: 60px 10px;
+          }
+
+          .smaller-video {
+              max-width: 80%;
           }
       }
    </style>
@@ -429,7 +469,7 @@
       
       <div class="buttons" data-aos="fade-up" data-aos-delay="200">
          <!-- Updated Button Text and Link -->
-         <a href="https://docs.google.com/forms/d/1GL7OWlZEn5Hz8HIkjB1nPW00UQZTaAkQ4iz5sYVBwtE/viewform?ts=6708ae61&edit_requested=true" target="_blank">Interest Form</a>
+         <a href="https://docs.google.com/forms/d/e/1FAIpQLSc2CtbYrGsDuBoZkV-Oz5WmomBAwXdLbqyxD7PVoFxPUM0Iug/formResponse" target="_blank">Submit Project!</a>
          <a href="#previous-winners" target="_self">Previous Winners</a>
       </div>
 
@@ -447,7 +487,7 @@
       </p>
       
       <!-- Embedded YouTube Video -->
-      <div class="responsive-iframe" data-aos="fade-up" data-aos-delay="200">
+      <div class="responsive-iframe smaller-video" data-aos="fade-up" data-aos-delay="200">
           <iframe 
               src="https://www.youtube.com/embed/vCjB8DFjYh8?si=vn8Y812mqKtxHGdf" 
               title="Showcase your STEAM skills video" 
@@ -486,7 +526,7 @@
          <div class="carousel-item" data-aos="zoom-in">
             <div class="image-box">
                <!-- Replace # with the actual sponsor link -->
-               <a href="https://xperiencecoding.github.io/xperiencecoding/"_blank">
+               <a href="https://xperiencecoding.github.io/xperiencecoding/" target="_blank">
                   <img src="images/sponsor2.jpeg" alt="Sponsor 2">
                </a>
             </div>
@@ -544,15 +584,51 @@
 
       <h2 data-aos="fade-right">Rubric</h2>
 
-      <div class="rubric-content" data-aos="fade-left">
-         <p><strong>Judging:</strong> Done by business professionals from the respective industry.</p>
-         <ul>
-            <li><strong>Identifying the problem (20pt):</strong> How pertinent is your problem?</li>
-            <li><strong>The solution (30pt):</strong> How feasible and logical is your project?</li>
-            <li><strong>Creativity / Innovation (20pt):</strong> How innovative and DARING is your project?</li>
-            <li><strong>Fits theme (20pt):</strong> How well does your project fit the theme? (TBD)</li>
-            <li><strong>Presentation Quality (10pt):</strong> How professional and engaging is it?</li>
-         </ul>
+      <div class="rubric-container">
+
+         <!-- Judging Criteria -->
+         <div class="rubric-item" data-aos="fade-up" data-aos-delay="100">
+            <h3>Judging</h3>
+            <p>Done by business professionals from the respective industry.</p>
+         </div>
+
+         <!-- Identifying the Problem -->
+         <div class="rubric-item" data-aos="fade-up" data-aos-delay="200">
+            <h3>Identifying the Problem (20pt)</h3>
+            <p>How pertinent is your problem?</p>
+         </div>
+
+         <!-- The Solution -->
+         <div class="rubric-item" data-aos="fade-up" data-aos-delay="300">
+            <h3>The Solution (30pt)</h3>
+            <p>How feasible and logical is your project?</p>
+         </div>
+
+         <!-- Creativity / Innovation -->
+         <div class="rubric-item" data-aos="fade-up" data-aos-delay="400">
+            <h3>Creativity / Innovation (20pt)</h3>
+            <p>How innovative and DARING is your project?</p>
+         </div>
+
+         <!-- Fits Theme -->
+         <div class="rubric-item" data-aos="fade-up" data-aos-delay="500">
+            <h3>Fits Theme (20pt)</h3>
+            <p>How well does your project fit the STEAM theme you are submitting it to?</p>
+         </div>
+
+         <!-- Presentation Quality -->
+         <div class="rubric-item" data-aos="fade-up" data-aos-delay="600">
+            <h3>Presentation Quality (10pt)</h3>
+            <p>How professional and engaging is it?</p>
+         </div>
+
+         <!-- Additional Notes -->
+         <div class="rubric-item" data-aos="fade-up" data-aos-delay="700">
+            <h3>Additional Notes</h3>
+            <p>* Art is graded mainly on Creativity/Presentation</p>
+            <p>* Projects that place high in 3 divisions have the chance to win the best prizes!</p>
+         </div>
+
       </div>
 
    </section> <!-- end rubric -->
