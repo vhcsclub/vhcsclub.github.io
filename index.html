@@ -46,16 +46,14 @@
     .logo a{ font-weight:900; letter-spacing:-0.02em; }
     #nav li a{ font-weight:900; font-size:1.02rem; letter-spacing:.01em; }
 
-    /* ===== HERO — fully centered landing text =====
-       Uses your theme's background (from main.css). */
+    /* ===== HERO — absolutely (visually) centered landing text =====
+       Keeps your theme's hero background from css/main.css. */
     #hero{
       position:relative;
-      /* subtract header height so visual center is true */
-      min-height: calc(100svh - var(--header-h));
-      padding-top: var(--header-h); /* avoid header overlap */
-      display:flex;
-      align-items:center;         /* vertical center */
-      justify-content:center;     /* horizontal center */
+      min-height:100svh;             /* full viewport height */
+      display:grid;                   /* center using grid */
+      place-items:center;             /* center horizontally + vertically */
+      padding: 0 0 0 0;               /* no extra padding needed for centering */
       color:#fff;
       text-align:center;
       overflow:hidden;
@@ -68,25 +66,36 @@
     }
     #hero > *{ position:relative; z-index:1; }
 
-    /* inner container centered with a clean max-width */
-    .hero-inner{ max-width:var(--maxw); width:100%; padding:0 24px; margin:0 auto; }
+    /* inner container */
+    .hero-inner{
+      width:100%;
+      max-width:var(--maxw);
+      padding:0 24px;
+      margin:0 auto;
+      display:grid;
+      place-items:center;             /* keep slider centered within the container */
+    }
 
-    /* Flexslider: ensure no stray margins push things off-center */
+    /* Slider wrapper */
+    #hero-slider{
+      width:100%;
+      max-width:980px;                /* readable line length */
+      margin:0 auto;
+    }
+
+    /* Flexslider caption styles */
     #hero .row.hero-content{ margin:0; }
     #hero .hero-container{ padding:0; }
-
-    /* Make slides themselves center their caption nicely */
-    #hero-slider{ max-width: 980px; margin: 0 auto; }
     #hero-slider .slides, #hero-slider .slides li, #hero-slider .flex-caption{
       text-align:center;
     }
 
-    /* Headline + decorative underline (slides 2/3 only) */
     #hero-slider .flex-caption h1{
       font-size:clamp(44px,7.2vw,82px); font-weight:900; color:#fff;
       text-transform:uppercase; letter-spacing:.02em; text-shadow:0 8px 30px rgba(0,0,0,0.35);
       margin:0 0 12px 0;
     }
+    /* decorative underline (slides 2/3 only) */
     #hero-slider .flex-caption h1::after{
       content:""; display:block; width:96px; height:6px; border-radius:999px;
       margin:14px auto 10px; background:linear-gradient(90deg, var(--accent), var(--brand));
