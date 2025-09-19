@@ -63,12 +63,11 @@
       /* Smooth in-page anchor scrolling */
       html{ scroll-behavior: smooth; }
 
-      /* Global font (including header/nav) */
+      /* Global reset + font */
       html, body, #main-header, #main-header * {
         font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif !important;
       }
-
-      body { background: var(--bg); color: var(--text); }
+      body { background: var(--bg); color: var(--text); margin: 0; } /* ensure no top gap */
 
       /* Shared layout */
       .container{
@@ -101,12 +100,13 @@
         margin-top: 12px;
       }
 
-      /* ===== HEADER (transparent overlay over hero) ===== */
+      /* ===== HEADER (transparent overlay over hero, NOT fixed on scroll) ===== */
       #main-header{
-        position: fixed; top: 0; left: 0; right: 0;
+        position: absolute; /* sits at top, scrolls away */
+        top: 0; left: 0; right: 0;
         width: 100%;
-        background: transparent;      /* fully transparent */
-        border-bottom: none;          /* no white line */
+        background: transparent;     /* fully transparent */
+        border-bottom: none;         /* no white line */
         z-index: 1000;
       }
       #main-header .row{
@@ -117,8 +117,16 @@
         align-items: center;
         justify-content: space-between;
       }
-      .logo a{ font-weight: 900; letter-spacing: -0.02em; /* no color override so original theme colors apply */ }
-      #nav li a{ font-weight: 700; } /* keep weight, leave colors to your theme */
+      .logo a{
+        font-weight: 900; 
+        letter-spacing: -0.02em;
+      }
+      /* Make menu text more bold & slightly bigger */
+      #nav li a{
+        font-weight: 900;
+        font-size: 1.02rem;
+        letter-spacing: .01em;
+      }
 
       /* ===== HERO ===== */
       #hero-d128 {
@@ -296,7 +304,7 @@
         color: #fff;
         position: relative;
         overflow: hidden;
-        padding-bottom: 72px; /* slightly reduced to move Past Winners up */
+        padding-bottom: 64px; /* slightly reduced to move Past Winners up */
       }
       #sponsors::before{
         content:"";
@@ -308,7 +316,7 @@
       }
       #sponsors h2, #sponsors .slim-text, #sponsors p { color: #ffffff; }
       /* Bigger supporting copy for consistency */
-      #sponsors .supporting{ font-size: 1.15rem; opacity:.95; }
+      #sponsors .supporting{ font-size: 1.25rem; opacity:.98; }
 
       .sponsors-wrap{ margin-top: 30px; }
       .sponsors-carousel .carousel-item{ padding: 12px; }
@@ -341,7 +349,7 @@
         color: #fff;
         position: relative;
         overflow: hidden;
-        padding-top: 72px; /* slightly reduced top padding for tighter spacing from Sponsors */
+        padding-top: 64px; /* slightly reduced top padding for tighter spacing from Sponsors */
       }
       #previous-winners::before{
         content:"";
@@ -352,11 +360,11 @@
         pointer-events: none;
       }
       #previous-winners h2, #previous-winners p { color: #ffffff; }
-      #previous-winners .supporting{ font-size: 1.15rem; opacity:.95; }
+      #previous-winners .supporting{ font-size: 1.25rem; opacity:.98; }
 
       /* ===== Rubric / Timeline / Prizes ===== */
       .section-title { /* underline via ::after */ }
-      .slim-text{ color: var(--muted); margin-top: 6px; font-size: 1.05rem; }
+      .slim-text{ color: var(--muted); margin-top: 6px; font-size: 1.08rem; }
 
       .stack{
         display: grid;
@@ -371,7 +379,7 @@
         padding: 22px;
       }
       /* Slightly larger description text in these sections */
-      .rubric-item p, .timeline-item p{ margin: 8px 0 0 0; font-size: 1.15rem; line-height: 1.65; }
+      .rubric-item p, .timeline-item p{ margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.68; }
 
       #prizes .prize-callout{
         display:inline-block;
@@ -411,7 +419,7 @@
 
 <body>
 
-   <!-- Transparent overlay header (no white bar at top)
+   <!-- Transparent overlay header (no white bar at top, not sticky)
    ================================================== -->
    <header id="main-header">
       <div class="row">
@@ -428,7 +436,8 @@
         	  </a>            
 
             <ul id="nav" class="nav">
-               <li><a class="smoothscroll" href="index.html#hero-d128">Home</a></li>
+               <!-- CHANGE: Home goes to external site -->
+               <li><a class="smoothscroll" href="https://vhcsclub.github.io" target="_blank" rel="noopener">Home</a></li>
                <li><a href="https://girlswhocode.com/" target="_blank" rel="noopener">Girls Who Code</a></li>
                <li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
     		   <li><a href="contact-us.html">Contact Us</a></li>
@@ -456,13 +465,13 @@
         </p>
 
         <div class="buttons" data-aos="fade-up" data-aos-delay="160">
-           <!-- CHANGE 1: Smoothly glide down to Past Winners embed -->
+           <!-- SMOOTH SCROLL to Past Winners embed -->
            <a class="btn btn-primary smoothscroll" href="#previous-winners">
              <i class="fa fa-angle-down" aria-hidden="true"></i>
              Meet the 2025 Winners
            </a>
 
-           <!-- CHANGE 2: Open slideshow in a new tab with new text -->
+           <!-- Open slideshow in a new tab with new text -->
            <a class="btn btn-ghost" href="https://docs.google.com/presentation/d/1o-pfEW6mALnnluv6OzXKs_BmJDEMTSlQeL8nLd7VNBc/edit?slide=id.p&pli=1#slide=id.p" target="_blank" rel="noopener">
              <i class="fa fa-external-link" aria-hidden="true"></i>
              View the 2025 award ceremony
@@ -616,10 +625,10 @@
          <p class="slim-text" data-aos="fade-right" data-aos-delay="60">More details soon — here’s a preview:</p>
 
          <!-- Clean, consistent callouts -->
-         <p data-aos="fade-up" data-aos-delay="100" style="margin-top: 18px; font-size:1.15rem; line-height:1.65;">
+         <p data-aos="fade-up" data-aos-delay="100" style="margin-top: 18px; font-size:1.2rem; line-height:1.7;">
            Total prize pool: <strong>$4,000+</strong> in scholarships, tech gear, and gift cards.
          </p>
-         <p data-aos="fade-up" data-aos-delay="130" style="font-size:1.15rem; line-height:1.65;">
+         <p data-aos="fade-up" data-aos-delay="130" style="font-size:1.2rem; line-height:1.7;">
            Top prize: <span class="prize-callout">$500 scholarship</span> &nbsp;•&nbsp;
            Multiple runner-up awards and special category recognitions.
          </p>
