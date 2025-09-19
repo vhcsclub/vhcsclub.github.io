@@ -101,42 +101,33 @@
         margin-top: 12px;
       }
 
-      <!-- header
-================================================== -->
-<header id="main-header">
-
-  <div class="row">
-
-    <div class="logo">
-      <a href="index.html">VHCS</a>
-    </div>
-
-    <nav id="nav-wrap">         
-      
-      <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
-        <span class="menu-icon">Menu</span>
-      </a>
-      <a class="mobile-btn" href="#" title="Hide navigation">
-        <span class="menu-icon">Menu</span>
-      </a>            
-
-      <ul id="nav" class="nav">
-        <!-- Home goes to your external site as requested -->
-        <li><a href="https://vhcsclub.github.io" target="_blank" rel="noopener">Home</a></li>
-        <li><a href="girls-who-code.html">Girls Who Code</a></li>
-        <li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
-      </ul> <!-- end #nav -->
-
-    </nav> <!-- end #nav-wrap -->
-
-    <ul class="header-social">
-      <li><a href="https://www.instagram.com/yourinstagramaccount" target="_blank"><i class="fa fa-instagram"></i></a></li>
-    </ul>      
-
-  </div>
-
-</header> <!-- end header -->
+      /* ===== HEADER (transparent overlay over hero, NOT fixed on scroll) ===== */
+      #main-header{
+        position: absolute; /* sits at top, scrolls away */
+        top: 0; left: 0; right: 0;
+        width: 100%;
+        background: transparent;     /* fully transparent */
+        border-bottom: none;         /* no white line */
+        z-index: 1000;
+      }
+      #main-header .row{
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo a{
+        font-weight: 900; 
+        letter-spacing: -0.02em;
+      }
+      /* Make menu text more bold & slightly bigger */
+      #nav li a{
+        font-weight: 900;
+        font-size: 1.02rem;
+        letter-spacing: .01em;
+      }
 
       /* ===== HERO ===== */
       #hero-d128 {
