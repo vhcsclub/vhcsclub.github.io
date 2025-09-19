@@ -1,226 +1,133 @@
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="en">
-<!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <title>VHCS — Vernon Hills Computer Science Club</title>
-  <meta name="description" content="Vernon Hills High School Computer Science Club">
-  <meta name="author" content="VHCS">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!--- basic page needs
+   ================================================== -->
+   <meta charset="utf-8">
+   <title>VHCS</title>
+   <meta name="description" content="">  
+   <meta name="author" content="">
 
-  <!-- Base theme CSS -->
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/vendor.min.css">
-  <link rel="stylesheet" href="css/main.css">
+   <!-- mobile specific metas
+   ================================================== -->
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- AOS & Slick -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+   <!-- CSS
+   ================================================== -->
+   <link rel="stylesheet" href="css/base.css">
+   <link rel="stylesheet" href="css/vendor.min.css">
+   <link rel="stylesheet" href="css/main.css">    
 
-  <script src="js/modernizr.js"></script>
-  <link rel="shortcut icon" href="favicon.png">
+   <!-- AOS CSS -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
-  <style>
-    :root{
-      --text:#0f172a;            /* slate-900 */
-      --muted:#475569;           /* slate-600 */
-      --bg:#ffffff;
-      --surface:#f8fafc;         /* slate-50 */
-      --card:#f1f5f9;            /* slate-100 */
-      --brand:#ff7e5f;
-      --brand-2:#feb47b;
-      --accent:#9b87f5;
-      --radius:16px;
-      --radius-btn:12px;
-      --maxw:1100px;
-      --pad-section:90px;
-      --dark:#0b1220;
-    }
+   <!-- Slick Carousel CSS -->
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
 
-    html{ scroll-behavior:smooth; }
-    body{ background:var(--bg); color:var(--text); margin:0; }
-    #site-main{
-      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif;
-    }
+   <!-- script
+   ================================================== -->
+   <script src="js/modernizr.js"></script>
 
-    .container{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
-    h1,h2,h3{ color:var(--text); line-height:1.2; letter-spacing:-0.01em; margin:0 0 12px; }
-    h1{ font-weight:900; }
-    h2{ font-size:clamp(32px,4.2vw,46px); font-weight:900; position:relative; }
-    h3{ font-size:clamp(22px,3.2vw,30px); font-weight:800; }
-    p,li{ font-size:1.12rem; color:var(--muted); }
-    h2.section-title::after{
-      content:""; display:block; width:72px; height:5px; border-radius:999px;
-      background:linear-gradient(90deg, var(--accent), var(--brand)); margin-top:12px;
-    }
-    section{ padding:var(--pad-section) 0; }
+   <!-- favicons
+   ================================================== -->
+   <link rel="shortcut icon" href="favicon.png" >
 
-    /* ====== HEADER (match Showcase) ====== */
-    #main-header{
-      position:absolute; top:0; left:0; right:0; width:100%;
-      background:transparent; border-bottom:none; z-index:1000;
-    }
-    #main-header .row{
-      max-width:var(--maxw); margin:0 auto; padding:14px 24px;
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    .logo a{ font-weight:900; letter-spacing:-0.02em; }
-    #nav li a{ font-weight:900; font-size:1.02rem; letter-spacing:.01em; }
+   <style>
+      /* Custom Styles for Index Page */
 
-    /* ====== HERO (keep background GIF + welcome text) ====== */
-    #hero{
-      min-height:100vh; display:grid; place-items:center; text-align:center;
-      position:relative; padding: calc(var(--pad-section) + 20px) 0 84px;
-      color:#fff; background:url("images/hero-background.gif") no-repeat center/cover; overflow:hidden;
-    }
-    #hero::before{ content:""; position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,0.46), rgba(0,0,0,0.64));
-    }
-    #hero::after{
-      content:""; position:absolute; width:820px; height:820px; right:-260px; top:-260px;
-      background:radial-gradient(closest-side, rgba(255,126,95,0.28), transparent 70%);
-      filter:blur(6px); pointer-events:none;
-    }
-    #hero > *{ position:relative; z-index:1; }
-    #hero .logo-image{
-      width:150px; height:150px; margin:0 auto 14px;
-      background:url("images/logoVHCS.png") no-repeat center/contain;
-      filter:drop-shadow(0 8px 24px rgba(0,0,0,0.25));
-    }
-    #hero h1{
-      font-size:clamp(44px,7.2vw,82px); color:#fff; text-transform:uppercase; letter-spacing:.02em;
-      text-shadow:0 8px 30px rgba(0,0,0,0.35);
-    }
-    #hero h1::after{
-      content:""; display:block; width:96px; height:6px; border-radius:999px;
-      margin:14px auto 10px; background:linear-gradient(90deg, var(--accent), var(--brand));
-    }
-    #hero .subhead{
-      max-width:980px; margin:16px auto 34px; padding:0 8px;
-      font-size:clamp(22px,3vw,28px); font-weight:900; color:#fff; opacity:.98; line-height:1.5; text-wrap:balance;
-    }
-    .buttons{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
-    .btn{
-      display:inline-flex; align-items:center; gap:10px; padding:18px 30px; border-radius:var(--radius-btn);
-      font-weight:900; font-size:1.2rem; letter-spacing:-0.01em; transition:transform .18s, box-shadow .18s, background .18s, color .18s;
-      box-shadow:0 10px 24px rgba(2,6,23,0.12);
-    }
-    .btn i{ font-size:1.1em; }
-    .btn-primary{ background:var(--brand); color:#fff; }
-    .btn-primary:hover{ transform:translateY(-2px) scale(1.02); background:var(--brand-2); }
-    .btn-ghost{ background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.3); }
-    .btn-ghost:hover{ transform:translateY(-2px) scale(1.02); background:rgba(255,255,255,.22); }
+      /* Adjust Hero Slider Text Alignment */
+      #hero-slider .flex-caption h1 {
+          font-size: 2em;
+          color: #fff;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
 
-    /* ====== ABOUT ====== */
-    #about{ background:var(--surface); position:relative; overflow:hidden; }
-    #about::before{
-      content:""; position:absolute; inset:-10%;
-      background:
-        radial-gradient(600px 320px at 10% 20%, rgba(155,135,245,0.18), transparent 60%),
-        radial-gradient(700px 360px at 90% 80%, rgba(255,126,95,0.16), transparent 65%);
-      pointer-events:none;
-    }
-    .lead{ font-size:1.35rem; color:var(--muted); margin-top:10px; line-height:1.65; text-wrap:balance; }
-    .feature-grid{
-      display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px;
-    }
-    @media (max-width:960px){ .feature-grid{ grid-template-columns:1fr 1fr; } }
-    @media (max-width:640px){ .feature-grid{ grid-template-columns:1fr; } }
-    .feature{
-      background:#fff; border:1px solid #e2e8f0; border-radius:var(--radius); padding:22px;
-      box-shadow:0 6px 24px rgba(15,23,42,.05);
-    }
-    .feature .icon{
-      width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
-      background:linear-gradient(135deg, var(--accent), var(--brand)); color:#fff; box-shadow:0 6px 16px rgba(2,6,23,.12); margin-bottom:10px;
-    }
+      #hero-slider .flex-caption h3 {
+          font-size: 1.2em;
+          color: #f0f0f0;
+          text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      }
 
-    /* ====== PROGRAMS (replaces portfolio/services; concise cards) ====== */
-    #programs .cards{
-      display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px;
-    }
-    @media (max-width:960px){ #programs .cards{ grid-template-columns:1fr 1fr; } }
-    @media (max-width:640px){ #programs .cards{ grid-template-columns:1fr; } }
-    .program{
-      background:#fff; border:1px solid #e2e8f0; border-radius:var(--radius); overflow:hidden;
-      box-shadow:0 8px 24px rgba(2,6,23,.06); display:flex; flex-direction:column;
-      transition:transform .18s ease, box-shadow .18s ease;
-    }
-    .program:hover{ transform:translateY(-3px); box-shadow:0 14px 32px rgba(2,6,23,.12); }
-    .program .thumb{
-      position:relative; padding-top:58%; background:#000; overflow:hidden;
-    }
-    .program .thumb img{
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1.05) saturate(1.02);
-    }
-    .program .body{ padding:18px; }
-    .program h4{ margin:0 0 6px; font-size:1.12rem; font-weight:900; color:var(--text); }
-    .program p{ margin:0; line-height:1.6; }
+      /* "Learn more" Button Styling */
+      #more a {
+          display: inline-block;
+          margin-top: 20px;
+          padding: 10px 20px;
+          background-color: #ff7e5f;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+      }
 
-    /* ====== DARK BAND (callout) ====== */
-    .darkband{ background:var(--dark); color:#fff; text-align:center; }
-    .darkband h2, .darkband p{ color:#fff; }
-    .darkband .btn-primary{ box-shadow:0 10px 24px rgba(0,0,0,.22); }
+      #more a:hover {
+          background-color: #feb47b;
+      }
 
-    /* ====== FOOTER ====== */
-    footer{ background:var(--dark); color:#fff; border-top:none; }
-    footer .row{ max-width:var(--maxw); margin:0 auto; padding:18px 24px; }
-    footer a{ color:#fff; text-decoration:none; } footer a:hover{ text-decoration:underline; }
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+          #hero-slider .flex-caption h1 {
+              font-size: 1.5em;
+          }
 
-    @media (max-width:768px){
-      .buttons{ gap:14px; }
-      .btn{ padding:16px 24px; font-size:1.12rem; }
-      #hero .subhead{ font-size:22px; }
-    }
-  </style>
+          #hero-slider .flex-caption h3 {
+              font-size: 1em;
+          }
+
+          #more a {
+              padding: 8px 16px;
+              font-size: 14px;
+          }
+      }
+   </style>
+
 </head>
 
 <body>
-  <!-- Header (exact match to Showcase) -->
-  <header id="main-header">
-    <div class="row">
-      <div class="logo"><a href="index.html">VHCS</a></div>
-      <nav id="nav-wrap">
-        <a class="mobile-btn" href="#nav-wrap" title="Show navigation"><span class="menu-icon">Menu</span></a>
-        <a class="mobile-btn" href="#" title="Hide navigation"><span class="menu-icon">Menu</span></a>
-        <ul id="nav" class="nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="girls-who-code.html">Girls Who Code</a></li>
-          <li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
-          <li><a href="contact-us.html">Contact Us</a></li>
-        </ul>
-      </nav>
-      <ul class="header-social">
-        <li><a href="https://www.instagram.com/vhcsclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">
-          <i class="fa fa-instagram"></i></a></li>
-      </ul>
-    </div>
-  </header>
 
-  <main id="site-main">
-    <!-- HERO (kept) -->
-    <section id="hero">
-      <div class="logo-image" data-aos="fade-down"></div>
-      <h1 data-aos="zoom-in">Welcome to <span>Vernon Hills CS Club</span></h1>
-      <p class="subhead" data-aos="fade-up" data-aos-delay="80">
-        Learn, build, and compete with a community that loves technology.
-        Weekly meetings • Workshops • Guest speakers • Real projects.
-      </p>
-      <div class="buttons" data-aos="fade-up" data-aos-delay="160">
-        <a class="btn btn-primary" href="#about"><i class="fa fa-angle-down" aria-hidden="true"></i> Learn more</a>
-        <a class="btn btn-ghost" href="contact-us.html"><i class="fa fa-envelope-o" aria-hidden="true"></i> Get in touch</a>
-      </div>
-    </section>
+   <!-- header
+   ================================================== -->
+   <header id="main-header">
 
-    <!-- ABOUT -->
+   	<div class="row">
+
+	      <div class="logo">
+	         <a href="index.html">VHCS</a>
+	      </div>
+
+	      <nav id="nav-wrap">         
+	         
+	         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
+	         	<span class="menu-icon">Menu</span>
+	         </a>
+         	<a class="mobile-btn" href="#" title="Hide navigation">
+         		<span class="menu-icon">Menu</span>
+         	</a>            
+
+	         <ul id="nav" class="nav">
+	            <li><a class="smoothscroll" href="#hero">Home</a></li>
+	            <li><a href="girls-who-code.html">Girls Who Code</a></li>
+	        	<li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
+				<li><a href="contact-us.html">Contact Us</a></li>
+
+	         </ul> <!-- end #nav -->
+
+	      </nav> <!-- end #nav-wrap -->
+
+	      <ul class="header-social">
+	        	<li><a href="https://www.instagram.com/yourinstagramaccount" target="_blank"><i class="fa fa-instagram"></i></a></li>
+	      </ul>      
+
+	   </div>
+
+   </header> <!-- end header -->
+
+
+   <!-- ABOUT -->
     <section id="about">
       <div class="container">
         <h2 class="section-title" data-aos="fade-right">What we’re about</h2>
