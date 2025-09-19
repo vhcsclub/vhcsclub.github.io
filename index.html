@@ -1,133 +1,242 @@
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
+  <meta charset="utf-8">
+  <title>VHCS — Vernon Hills Computer Science Club</title>
+  <meta name="description" content="Vernon Hills High School Computer Science Club">
+  <meta name="author" content="VHCS">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-   <!--- basic page needs
-   ================================================== -->
-   <meta charset="utf-8">
-   <title>VHCS</title>
-   <meta name="description" content="">  
-   <meta name="author" content="">
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-   <!-- mobile specific metas
-   ================================================== -->
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/vendor.min.css">
+  <link rel="stylesheet" href="css/main.css">
 
-   <!-- CSS
-   ================================================== -->
-   <link rel="stylesheet" href="css/base.css">
-   <link rel="stylesheet" href="css/vendor.min.css">
-   <link rel="stylesheet" href="css/main.css">    
+  <!-- AOS & Slick (optional later) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
 
-   <!-- AOS CSS -->
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <script src="js/modernizr.js"></script>
+  <link rel="shortcut icon" href="favicon.png">
 
-   <!-- Slick Carousel CSS -->
-   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  <style>
+    :root{
+      --text:#0f172a;            /* slate-900 */
+      --muted:#475569;           /* slate-600 */
+      --bg:#ffffff;
+      --surface:#f8fafc;         /* slate-50 */
+      --card:#f1f5f9;            /* slate-100 */
+      --brand:#ff7e5f;
+      --brand-2:#feb47b;
+      --accent:#9b87f5;
+      --radius:16px;
+      --radius-btn:12px;
+      --maxw:1100px;
+      --pad-section:90px;
+      --dark:#0b1220;
+    }
 
-   <!-- script
-   ================================================== -->
-   <script src="js/modernizr.js"></script>
+    html{ scroll-behavior:smooth; }
+    body{ background:var(--bg); color:var(--text); margin:0; }
+    #site-main{
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif;
+    }
 
-   <!-- favicons
-   ================================================== -->
-   <link rel="shortcut icon" href="favicon.png" >
+    /* ====== Header (same as Showcase) ====== */
+    #main-header{
+      position:absolute; top:0; left:0; right:0; width:100%;
+      background:transparent; border-bottom:none; z-index:1000;
+    }
+    #main-header .row{
+      max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .logo a{ font-weight:900; letter-spacing:-0.02em; }
+    #nav li a{ font-weight:900; font-size:1.02rem; letter-spacing:.01em; }
 
-   <style>
-      /* Custom Styles for Index Page */
+    /* ====== HERO uses your ORIGINAL background from main.css/theme ======
+       We do NOT set a new background image here. We only add a subtle overlay and
+       typography so your uploaded GIF/image continues to show. */
+    #hero{
+      position:relative;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:#fff;
+      padding: calc(var(--pad-section) + 20px) 0 84px;
+      overflow:hidden;
+    }
+    /* soft gradient overlay on top of your existing background */
+    #hero::before{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.46), rgba(0,0,0,0.64));
+      z-index:0;
+    }
+    #hero > *{ position:relative; z-index:1; }
 
-      /* Adjust Hero Slider Text Alignment */
-      #hero-slider .flex-caption h1 {
-          font-size: 2em;
-          color: #fff;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      }
+    /* Flexslider caption typography (matching our new style) */
+    #hero-slider .flex-caption h1{
+      font-size:clamp(44px,7.2vw,82px);
+      font-weight:900;
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+      text-shadow:0 8px 30px rgba(0,0,0,0.35);
+      margin-bottom:12px;
+    }
+    #hero-slider .flex-caption h1::after{
+      content:""; display:block; width:96px; height:6px; border-radius:999px;
+      margin:14px auto 10px; background:linear-gradient(90deg, var(--accent), var(--brand));
+    }
+    #hero-slider .flex-caption h3{
+      font-size:clamp(20px,2.6vw,26px);
+      font-weight:700;
+      color:#ffffff;
+      opacity:.98;
+      line-height:1.55;
+      text-shadow:0 6px 20px rgba(0,0,0,0.3);
+      max-width:980px;
+      margin:0 auto;
+    }
 
-      #hero-slider .flex-caption h3 {
-          font-size: 1.2em;
-          color: #f0f0f0;
-          text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-      }
+    /* “Learn more” button under the slider */
+    #more{ margin-top:22px; }
+    #more a{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:14px 22px; border-radius:var(--radius-btn);
+      background:var(--brand); color:#fff; font-weight:900; letter-spacing:-0.01em;
+      box-shadow:0 10px 24px rgba(2,6,23,0.12);
+      transition:transform .18s ease, background .18s ease;
+    }
+    #more a:hover{ transform:translateY(-2px) scale(1.02); background:var(--brand-2); }
 
-      /* "Learn more" Button Styling */
-      #more a {
-          display: inline-block;
-          margin-top: 20px;
-          padding: 10px 20px;
-          background-color: #ff7e5f;
-          color: #fff;
-          text-decoration: none;
-          border-radius: 5px;
-          transition: background-color 0.3s ease;
-      }
+    section{ padding:var(--pad-section) 0; }
+    .container{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+    h2.section-title{ font-size:clamp(32px,4.2vw,46px); font-weight:900; }
+    h2.section-title::after{
+      content:""; display:block; width:72px; height:5px; border-radius:999px;
+      background:linear-gradient(90deg, var(--accent), var(--brand)); margin-top:12px;
+    }
+    .lead{ font-size:1.35rem; color:var(--muted); margin-top:10px; line-height:1.65; text-wrap:balance; }
 
-      #more a:hover {
-          background-color: #feb47b;
-      }
+    /* Programs cards (cleaned-up “portfolio/services”) */
+    #programs .cards{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px;
+    }
+    @media (max-width:960px){ #programs .cards{ grid-template-columns:1fr 1fr; } }
+    @media (max-width:640px){ #programs .cards{ grid-template-columns:1fr; } }
+    .program{
+      background:#fff; border:1px solid #e2e8f0; border-radius:var(--radius); overflow:hidden;
+      box-shadow:0 8px 24px rgba(2,6,23,.06); display:flex; flex-direction:column;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .program:hover{ transform:translateY(-3px); box-shadow:0 14px 32px rgba(2,6,23,.12); }
+    .program .thumb{ position:relative; padding-top:58%; background:#000; overflow:hidden; }
+    .program .thumb img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .program .body{ padding:18px; }
+    .program h4{ margin:0 0 6px; font-size:1.12rem; font-weight:900; color:var(--text); }
+    .program p{ margin:0; line-height:1.6; }
 
-      /* Responsive Adjustments */
-      @media (max-width: 768px) {
-          #hero-slider .flex-caption h1 {
-              font-size: 1.5em;
-          }
+    /* Dark call-to-action band */
+    .darkband{ background:var(--dark); color:#fff; text-align:center; }
+    .darkband h2, .darkband p{ color:#fff; }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; padding:18px 30px; border-radius:var(--radius-btn);
+      font-weight:900; font-size:1.2rem; letter-spacing:-0.01em; transition:transform .18s, box-shadow .18s, background .18s, color .18s;
+      box-shadow:0 10px 24px rgba(2,6,23,0.12);
+    }
+    .btn-primary{ background:var(--brand); color:#fff; }
+    .btn-primary:hover{ transform:translateY(-2px) scale(1.02); background:var(--brand-2); }
+    .btn-ghost{ background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.3); }
+    .btn-ghost:hover{ transform:translateY(-2px) scale(1.02); background:rgba(255,255,255,.22); }
+    .buttons{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
 
-          #hero-slider .flex-caption h3 {
-              font-size: 1em;
-          }
+    /* Footer */
+    footer{ background:var(--dark); color:#fff; border-top:none; }
+    footer .row{ max-width:var(--maxw); margin:0 auto; padding:18px 24px; }
+    footer a{ color:#fff; text-decoration:none; } footer a:hover{ text-decoration:underline; }
 
-          #more a {
-              padding: 8px 16px;
-              font-size: 14px;
-          }
-      }
-   </style>
-
+    @media (max-width:768px){
+      #hero-slider .flex-caption h1{ font-size:clamp(38px,7vw,58px); }
+      #hero-slider .flex-caption h3{ font-size:clamp(18px,2.8vw,22px); }
+      .buttons{ gap:14px; }
+      .btn{ padding:16px 24px; font-size:1.12rem; }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Header (exact match to Showcase) -->
+  <header id="main-header">
+    <div class="row">
+      <div class="logo"><a href="index.html">VHCS</a></div>
+      <nav id="nav-wrap">
+        <a class="mobile-btn" href="#nav-wrap" title="Show navigation"><span class="menu-icon">Menu</span></a>
+        <a class="mobile-btn" href="#" title="Hide navigation"><span class="menu-icon">Menu</span></a>
+        <ul id="nav" class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="girls-who-code.html">Girls Who Code</a></li>
+          <li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <ul class="header-social">
+        <li><a href="https://www.instagram.com/vhcsclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a></li>
+      </ul>
+    </div>
+  </header>
 
-   <!-- header
-   ================================================== -->
-   <header id="main-header">
+  <main id="site-main">
+    <!-- HERO (original background + original slider restored) -->
+    <section id="hero">
+      <div class="row hero-content">
+        <div class="twelve columns hero-container">
+          <!-- hero-slider start -->
+          <div id="hero-slider" class="flexslider">
+            <ul class="slides">
+              <!-- slide 1 -->
+              <li>
+                <div class="flex-caption">
+                  <h1>Welcome to <span>Vernon Hills Computer Science Club!</span></h1>
+                  <h3>Learn more about our club, how to get involved, and stay updated with our events and competitions!</h3>
+                </div>
+              </li>
+              <!-- slide 2 -->
+              <li>
+                <div class="flex-caption">
+                  <h1>Empowering Innovation and Collaboration in Computer Science at VHHS.</h1>
+                  <h3>We offer many ways for our students to develop interest in CS!</h3>
+                </div>
+              </li>
+              <!-- slide 3 -->
+              <li>
+                <div class="flex-caption">
+                  <h1>Take a look at <a class="smoothscroll" href="#programs" title="programs">our programs</a> or
+                    <a href="contact-us.html" title="contact us">get in touch</a> to see how you can join.</h1>
+                  <h3>Our meetings are weekly, with different factions of the club meeting on different dates.</h3>
+                </div>
+              </li>
+            </ul>
+          </div><!-- end hero-slider -->
+        </div>
+      </div>
 
-   	<div class="row">
+      <div id="more">
+        <a class="smoothscroll" href="#about"><i class="fa fa-angle-down"></i> Learn more</a>
+      </div>
+    </section>
 
-	      <div class="logo">
-	         <a href="index.html">VHCS</a>
-	      </div>
-
-	      <nav id="nav-wrap">         
-	         
-	         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
-	         	<span class="menu-icon">Menu</span>
-	         </a>
-         	<a class="mobile-btn" href="#" title="Hide navigation">
-         		<span class="menu-icon">Menu</span>
-         	</a>            
-
-	         <ul id="nav" class="nav">
-	            <li><a class="smoothscroll" href="#hero">Home</a></li>
-	            <li><a href="girls-who-code.html">Girls Who Code</a></li>
-	        	<li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
-				<li><a href="contact-us.html">Contact Us</a></li>
-
-	         </ul> <!-- end #nav -->
-
-	      </nav> <!-- end #nav-wrap -->
-
-	      <ul class="header-social">
-	        	<li><a href="https://www.instagram.com/yourinstagramaccount" target="_blank"><i class="fa fa-instagram"></i></a></li>
-	      </ul>      
-
-	   </div>
-
-   </header> <!-- end header -->
-
-
-   <!-- ABOUT -->
+    <!-- ABOUT -->
     <section id="about">
       <div class="container">
         <h2 class="section-title" data-aos="fade-right">What we’re about</h2>
@@ -135,33 +244,15 @@
           VHCS empowers students to explore coding, problem-solving, and technology through hands-on activities,
           competitions, and community projects. No experience required — just curiosity.
         </p>
-
-        <div class="feature-grid">
-          <div class="feature" data-aos="fade-up" data-aos-delay="80">
-            <div class="icon"><i class="fa fa-code"></i></div>
-            <h3>Weekly Build Sessions</h3>
-            <p>Learn by doing — mini projects, pair programming, and practical tutorials across web, apps, AI, and more.</p>
-          </div>
-          <div class="feature" data-aos="fade-up" data-aos-delay="140">
-            <div class="icon"><i class="fa fa-trophy"></i></div>
-            <h3>Competitions & Hackathons</h3>
-            <p>Prepare for coding competitions and district events like the D128 STEAM Showcase.</p>
-          </div>
-          <div class="feature" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="fa fa-users"></i></div>
-            <h3>Community & Careers</h3>
-            <p>Guest speakers from industry, resume tips, and opportunities to mentor and volunteer.</p>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- PROGRAMS (replaces portfolio/services) -->
+    <!-- PROGRAMS (clean cards instead of long portfolio/services) -->
     <section id="programs">
       <div class="container">
         <h2 class="section-title" data-aos="fade-right">Programs & Opportunities</h2>
         <p class="lead" data-aos="fade-right" data-aos-delay="60">
-          Choose a track or try them all — each one gives you real, showcase-ready work.
+          Pick a path or try them all — each leads to real, showcase-ready work.
         </p>
 
         <div class="cards">
@@ -177,7 +268,7 @@
             <div class="thumb"><img src="images/portfolio/beetle.jpg" alt="XP Coding"></div>
             <div class="body">
               <h4>XP Coding & Consulting</h4>
-              <p>Workshops, client-style projects, and portfolio pieces with mentorship from peers and partners.</p>
+              <p>Workshop series and client-style projects that turn your skills into portfolio pieces.</p>
             </div>
           </article>
 
@@ -185,7 +276,7 @@
             <div class="thumb"><img src="images/portfolio/banjo-player.jpg" alt="GWC"></div>
             <div class="body">
               <h4>Girls Who Code @ VHHS</h4>
-              <p>Inclusive space and curriculum focused on representation and belonging in tech.</p>
+              <p>Inclusive space focused on representation and belonging in tech.</p>
             </div>
           </article>
 
@@ -193,7 +284,7 @@
             <div class="thumb"><img src="images/portfolio/lighthouse.jpg" alt="Web Dev"></div>
             <div class="body">
               <h4>Web & App Dev</h4>
-              <p>Design and build modern websites or apps. Learn frontend, backend, and deployment basics.</p>
+              <p>Design and build modern websites or apps, learn frontend/back-end and deployment basics.</p>
             </div>
           </article>
 
@@ -224,7 +315,7 @@
           Come to our next meeting or reach out — beginners welcome.
         </p>
         <div class="buttons" data-aos="fade-up" data-aos-delay="120">
-          <a class="btn btn-primary" href="contact-us.html"><i class="fa fa-calendar-o"></i> Contact Us</a>
+          <a class="btn btn-primary" href="contact-us.html"><i class="fa fa-envelope-o"></i> Contact Us</a>
           <a class="btn btn-ghost" href="d128-steam-showcase.html"><i class="fa fa-star-o"></i> Explore STEAM Showcase</a>
         </div>
       </div>
@@ -267,18 +358,20 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
   <script>
+    // AOS animations
     AOS.init({ duration: 800, once: true });
 
-    // (Optional) If you later add any .sponsors-carousel on the homepage:
-    $(function(){
-      $('.sponsors-carousel').slick({
-        slidesToShow: 4, slidesToScroll: 1, autoplay: true, autoplaySpeed: 2200,
-        arrows: false, dots: false, infinite: true, pauseOnHover: false,
-        responsive: [
-          { breakpoint: 1024, settings: { slidesToShow: 3 } },
-          { breakpoint: 720,  settings: { slidesToShow: 2 } },
-          { breakpoint: 520,  settings: { slidesToShow: 1 } }
-        ]
+    // Flexslider: if your theme's main.js already initializes, this is optional;
+    // leaving it here guarantees the slider starts.
+    $(window).on('load', function(){
+      $('#hero-slider').flexslider({
+        animation: 'fade',
+        controlNav: true,
+        directionNav: false,
+        slideshowSpeed: 5000,
+        animationSpeed: 700,
+        smoothHeight: true,
+        pauseOnHover: false
       });
     });
   </script>
