@@ -1,746 +1,379 @@
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
+  <meta charset="utf-8">
+  <title>VHCS — Vernon Hills Computer Science Club</title>
+  <meta name="description" content="Vernon Hills High School Computer Science Club">
+  <meta name="author" content="VHCS">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-   <!--- basic page needs
-   ================================================== -->
-   <meta charset="utf-8">
-   <title>VHCS</title>
-   <meta name="description" content="">  
-   <meta name="author" content="">
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-   <!-- mobile specific metas
-   ================================================== -->
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- Base theme CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/vendor.min.css">
+  <link rel="stylesheet" href="css/main.css">
 
-   <!-- CSS
-   ================================================== -->
-   <link rel="stylesheet" href="css/base.css">
-   <link rel="stylesheet" href="css/vendor.min.css">
-   <link rel="stylesheet" href="css/main.css">    
+  <!-- AOS & Slick -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
 
-   <!-- AOS CSS -->
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <script src="js/modernizr.js"></script>
+  <link rel="shortcut icon" href="favicon.png">
 
-   <!-- Slick Carousel CSS -->
-   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  <style>
+    :root{
+      --text:#0f172a;            /* slate-900 */
+      --muted:#475569;           /* slate-600 */
+      --bg:#ffffff;
+      --surface:#f8fafc;         /* slate-50 */
+      --card:#f1f5f9;            /* slate-100 */
+      --brand:#ff7e5f;
+      --brand-2:#feb47b;
+      --accent:#9b87f5;
+      --radius:16px;
+      --radius-btn:12px;
+      --maxw:1100px;
+      --pad-section:90px;
+      --dark:#0b1220;
+    }
 
-   <!-- script
-   ================================================== -->
-   <script src="js/modernizr.js"></script>
+    html{ scroll-behavior:smooth; }
+    body{ background:var(--bg); color:var(--text); margin:0; }
+    #site-main{
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif;
+    }
 
-   <!-- favicons
-   ================================================== -->
-   <link rel="shortcut icon" href="favicon.png" >
+    .container{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+    h1,h2,h3{ color:var(--text); line-height:1.2; letter-spacing:-0.01em; margin:0 0 12px; }
+    h1{ font-weight:900; }
+    h2{ font-size:clamp(32px,4.2vw,46px); font-weight:900; position:relative; }
+    h3{ font-size:clamp(22px,3.2vw,30px); font-weight:800; }
+    p,li{ font-size:1.12rem; color:var(--muted); }
+    h2.section-title::after{
+      content:""; display:block; width:72px; height:5px; border-radius:999px;
+      background:linear-gradient(90deg, var(--accent), var(--brand)); margin-top:12px;
+    }
+    section{ padding:var(--pad-section) 0; }
 
-   <style>
-      /* Custom Styles for Index Page */
+    /* ====== HEADER (match Showcase) ====== */
+    #main-header{
+      position:absolute; top:0; left:0; right:0; width:100%;
+      background:transparent; border-bottom:none; z-index:1000;
+    }
+    #main-header .row{
+      max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .logo a{ font-weight:900; letter-spacing:-0.02em; }
+    #nav li a{ font-weight:900; font-size:1.02rem; letter-spacing:.01em; }
 
-      /* Adjust Hero Slider Text Alignment */
-      #hero-slider .flex-caption h1 {
-          font-size: 2em;
-          color: #fff;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      }
+    /* ====== HERO (keep background GIF + welcome text) ====== */
+    #hero{
+      min-height:100vh; display:grid; place-items:center; text-align:center;
+      position:relative; padding: calc(var(--pad-section) + 20px) 0 84px;
+      color:#fff; background:url("images/hero-background.gif") no-repeat center/cover; overflow:hidden;
+    }
+    #hero::before{ content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.46), rgba(0,0,0,0.64));
+    }
+    #hero::after{
+      content:""; position:absolute; width:820px; height:820px; right:-260px; top:-260px;
+      background:radial-gradient(closest-side, rgba(255,126,95,0.28), transparent 70%);
+      filter:blur(6px); pointer-events:none;
+    }
+    #hero > *{ position:relative; z-index:1; }
+    #hero .logo-image{
+      width:150px; height:150px; margin:0 auto 14px;
+      background:url("images/logoVHCS.png") no-repeat center/contain;
+      filter:drop-shadow(0 8px 24px rgba(0,0,0,0.25));
+    }
+    #hero h1{
+      font-size:clamp(44px,7.2vw,82px); color:#fff; text-transform:uppercase; letter-spacing:.02em;
+      text-shadow:0 8px 30px rgba(0,0,0,0.35);
+    }
+    #hero h1::after{
+      content:""; display:block; width:96px; height:6px; border-radius:999px;
+      margin:14px auto 10px; background:linear-gradient(90deg, var(--accent), var(--brand));
+    }
+    #hero .subhead{
+      max-width:980px; margin:16px auto 34px; padding:0 8px;
+      font-size:clamp(22px,3vw,28px); font-weight:900; color:#fff; opacity:.98; line-height:1.5; text-wrap:balance;
+    }
+    .buttons{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; padding:18px 30px; border-radius:var(--radius-btn);
+      font-weight:900; font-size:1.2rem; letter-spacing:-0.01em; transition:transform .18s, box-shadow .18s, background .18s, color .18s;
+      box-shadow:0 10px 24px rgba(2,6,23,0.12);
+    }
+    .btn i{ font-size:1.1em; }
+    .btn-primary{ background:var(--brand); color:#fff; }
+    .btn-primary:hover{ transform:translateY(-2px) scale(1.02); background:var(--brand-2); }
+    .btn-ghost{ background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.3); }
+    .btn-ghost:hover{ transform:translateY(-2px) scale(1.02); background:rgba(255,255,255,.22); }
 
-      #hero-slider .flex-caption h3 {
-          font-size: 1.2em;
-          color: #f0f0f0;
-          text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-      }
+    /* ====== ABOUT ====== */
+    #about{ background:var(--surface); position:relative; overflow:hidden; }
+    #about::before{
+      content:""; position:absolute; inset:-10%;
+      background:
+        radial-gradient(600px 320px at 10% 20%, rgba(155,135,245,0.18), transparent 60%),
+        radial-gradient(700px 360px at 90% 80%, rgba(255,126,95,0.16), transparent 65%);
+      pointer-events:none;
+    }
+    .lead{ font-size:1.35rem; color:var(--muted); margin-top:10px; line-height:1.65; text-wrap:balance; }
+    .feature-grid{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px;
+    }
+    @media (max-width:960px){ .feature-grid{ grid-template-columns:1fr 1fr; } }
+    @media (max-width:640px){ .feature-grid{ grid-template-columns:1fr; } }
+    .feature{
+      background:#fff; border:1px solid #e2e8f0; border-radius:var(--radius); padding:22px;
+      box-shadow:0 6px 24px rgba(15,23,42,.05);
+    }
+    .feature .icon{
+      width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+      background:linear-gradient(135deg, var(--accent), var(--brand)); color:#fff; box-shadow:0 6px 16px rgba(2,6,23,.12); margin-bottom:10px;
+    }
 
-      /* "Learn more" Button Styling */
-      #more a {
-          display: inline-block;
-          margin-top: 20px;
-          padding: 10px 20px;
-          background-color: #ff7e5f;
-          color: #fff;
-          text-decoration: none;
-          border-radius: 5px;
-          transition: background-color 0.3s ease;
-      }
+    /* ====== PROGRAMS (replaces portfolio/services; concise cards) ====== */
+    #programs .cards{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px;
+    }
+    @media (max-width:960px){ #programs .cards{ grid-template-columns:1fr 1fr; } }
+    @media (max-width:640px){ #programs .cards{ grid-template-columns:1fr; } }
+    .program{
+      background:#fff; border:1px solid #e2e8f0; border-radius:var(--radius); overflow:hidden;
+      box-shadow:0 8px 24px rgba(2,6,23,.06); display:flex; flex-direction:column;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .program:hover{ transform:translateY(-3px); box-shadow:0 14px 32px rgba(2,6,23,.12); }
+    .program .thumb{
+      position:relative; padding-top:58%; background:#000; overflow:hidden;
+    }
+    .program .thumb img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1.05) saturate(1.02);
+    }
+    .program .body{ padding:18px; }
+    .program h4{ margin:0 0 6px; font-size:1.12rem; font-weight:900; color:var(--text); }
+    .program p{ margin:0; line-height:1.6; }
 
-      #more a:hover {
-          background-color: #feb47b;
-      }
+    /* ====== DARK BAND (callout) ====== */
+    .darkband{ background:var(--dark); color:#fff; text-align:center; }
+    .darkband h2, .darkband p{ color:#fff; }
+    .darkband .btn-primary{ box-shadow:0 10px 24px rgba(0,0,0,.22); }
 
-      /* Responsive Adjustments */
-      @media (max-width: 768px) {
-          #hero-slider .flex-caption h1 {
-              font-size: 1.5em;
-          }
+    /* ====== FOOTER ====== */
+    footer{ background:var(--dark); color:#fff; border-top:none; }
+    footer .row{ max-width:var(--maxw); margin:0 auto; padding:18px 24px; }
+    footer a{ color:#fff; text-decoration:none; } footer a:hover{ text-decoration:underline; }
 
-          #hero-slider .flex-caption h3 {
-              font-size: 1em;
-          }
-
-          #more a {
-              padding: 8px 16px;
-              font-size: 14px;
-          }
-      }
-   </style>
-
+    @media (max-width:768px){
+      .buttons{ gap:14px; }
+      .btn{ padding:16px 24px; font-size:1.12rem; }
+      #hero .subhead{ font-size:22px; }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Header (exact match to Showcase) -->
+  <header id="main-header">
+    <div class="row">
+      <div class="logo"><a href="index.html">VHCS</a></div>
+      <nav id="nav-wrap">
+        <a class="mobile-btn" href="#nav-wrap" title="Show navigation"><span class="menu-icon">Menu</span></a>
+        <a class="mobile-btn" href="#" title="Hide navigation"><span class="menu-icon">Menu</span></a>
+        <ul id="nav" class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="girls-who-code.html">Girls Who Code</a></li>
+          <li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <ul class="header-social">
+        <li><a href="https://www.instagram.com/vhcsclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">
+          <i class="fa fa-instagram"></i></a></li>
+      </ul>
+    </div>
+  </header>
 
-   <!-- header
-   ================================================== -->
-   <header id="main-header">
+  <main id="site-main">
+    <!-- HERO (kept) -->
+    <section id="hero">
+      <div class="logo-image" data-aos="fade-down"></div>
+      <h1 data-aos="zoom-in">Welcome to <span>Vernon Hills CS Club</span></h1>
+      <p class="subhead" data-aos="fade-up" data-aos-delay="80">
+        Learn, build, and compete with a community that loves technology.
+        Weekly meetings • Workshops • Guest speakers • Real projects.
+      </p>
+      <div class="buttons" data-aos="fade-up" data-aos-delay="160">
+        <a class="btn btn-primary" href="#about"><i class="fa fa-angle-down" aria-hidden="true"></i> Learn more</a>
+        <a class="btn btn-ghost" href="contact-us.html"><i class="fa fa-envelope-o" aria-hidden="true"></i> Get in touch</a>
+      </div>
+    </section>
 
-   	<div class="row">
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-right">What we’re about</h2>
+        <p class="lead" data-aos="fade-right" data-aos-delay="60">
+          VHCS empowers students to explore coding, problem-solving, and technology through hands-on activities,
+          competitions, and community projects. No experience required — just curiosity.
+        </p>
 
-	      <div class="logo">
-	         <a href="index.html">VHCS</a>
-	      </div>
+        <div class="feature-grid">
+          <div class="feature" data-aos="fade-up" data-aos-delay="80">
+            <div class="icon"><i class="fa fa-code"></i></div>
+            <h3>Weekly Build Sessions</h3>
+            <p>Learn by doing — mini projects, pair programming, and practical tutorials across web, apps, AI, and more.</p>
+          </div>
+          <div class="feature" data-aos="fade-up" data-aos-delay="140">
+            <div class="icon"><i class="fa fa-trophy"></i></div>
+            <h3>Competitions & Hackathons</h3>
+            <p>Prepare for coding competitions and district events like the D128 STEAM Showcase.</p>
+          </div>
+          <div class="feature" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon"><i class="fa fa-users"></i></div>
+            <h3>Community & Careers</h3>
+            <p>Guest speakers from industry, resume tips, and opportunities to mentor and volunteer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-	      <nav id="nav-wrap">         
-	         
-	         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
-	         	<span class="menu-icon">Menu</span>
-	         </a>
-         	<a class="mobile-btn" href="#" title="Hide navigation">
-         		<span class="menu-icon">Menu</span>
-         	</a>            
+    <!-- PROGRAMS (replaces portfolio/services) -->
+    <section id="programs">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-right">Programs & Opportunities</h2>
+        <p class="lead" data-aos="fade-right" data-aos-delay="60">
+          Choose a track or try them all — each one gives you real, showcase-ready work.
+        </p>
 
-	         <ul id="nav" class="nav">
-	            <li><a class="smoothscroll" href="#hero">Home</a></li>
-	            <li><a href="girls-who-code.html">Girls Who Code</a></li>
-	        	<li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
-				<li><a href="contact-us.html">Contact Us</a></li>
-
-	         </ul> <!-- end #nav -->
-
-	      </nav> <!-- end #nav-wrap -->
-
-	      <ul class="header-social">
-	        	<li><a href="https://www.instagram.com/yourinstagramaccount" target="_blank"><i class="fa fa-instagram"></i></a></li>
-	      </ul>      
-
-	   </div>
-
-   </header> <!-- end header -->
-
-
-   <!-- homepage hero
-   ================================================== -->
-   <section id="hero">	
-   	  
-		<div class="row hero-content">
-
-			<div class="twelve columns hero-container">
-
-			   <!-- hero-slider start-->
-			   <div id="hero-slider" class="flexslider">
-
-				   <ul class="slides">
-
-					   <!-- slide -->
-					   <li>
-						   <div class="flex-caption">
-								<h1 class="">Welcome to <span>Vernon Hills Computer Science Club!</span>. 
-								</h1>	
-									
-								<h3 class="">Learn more about our club, how to get involved, and stay updated with our events and competitions!</h3>				   
-							</div>						
-					   </li>
-
-					   <!-- slide -->
-					   <li>						
-							<div class="flex-caption">
-								<h1 class="">Empowering Innovation and Collaboration in Computer Science at VHHS.</h1>
-
-								<h3 class="">We offer many ways for our students to develop interest in CS!</h3>			   
-							</div>					
-					   </li>
-
-					   <!-- slide -->
-					   <li>
-						   <div class="flex-caption">
-								<h1 class="">Take a look at some of <a class="smoothscroll" href="#portfolio" title="portfolio" >our works</a> or 
-								<a class="smoothscroll" href="#contact" title="contact us">get in touch</a> to discuss how we can help you.</h1>
-
-								<h3 class="">Our meetings are weekly, with different factions of the club meeting on different dates.</h3>			   
-							</div>
-					   </li>					              
-
-				   </ul>
-
-			   </div> <!-- end hero-slider -->				   
-
-	      </div> <!-- end twelve columns-->
-
-		</div> <!-- end row -->	
-
-		<div id="more">
-		      <a class="smoothscroll" href="#services">Learn more<i class="fa fa-angle-down"></i></a>
-		</div> 	
-
-   </section> <!-- end homepage hero -->
-
-
-   <!-- portfolio
-   ================================================== -->
-   <section id="portfolio">
-
-      <div class="row section-head">
-
-      	<div class="twelve columns">
-
-      		<h1>Our Latest Events<span>.</span></h1>
-
-	         <hr />               
-
-	         <p>The VHCS Computer Science Club empowers students to explore and develop their skills in coding, problem-solving, and technology. We organize workshops, coding challenges, and collaborative projects to enhance members’ understanding of computer science concepts. 
-	         </p>
-
-	      </div>
-
-      </div> <!-- end section-head -->
-
-      <div class="row items">
-
-         <!-- portfolio-wrapper -->
-         <div id="portfolio-wrapper" class="bgrid-fourth s-bgrid-third tab-bgrid-half">
-
-            <div class="bgrid folio-item">
-               <div class="item-wrap">
-                  <a href="#modal-01">
-	                  <img src="images/portfolio/underwater.jpg" alt="Underwater">
-                     <div class="overlay"></div>                       
-                     <div class="portfolio-item-meta">
-     					      <h5>Courses</h5>
-                        <p>AP and DC courses!</p>
-     					   </div> 
-                     <div class="link-icon"><i class="fa fa-plus"></i></div>
-                  </a>
-               </div>
-        		</div> <!-- item end -->
-
-            <div class="bgrid folio-item">
-               <div class="item-wrap">
-                  <a href="#modal-02">
-                     <img src="images/portfolio/hotel.jpg" alt="Hotel Sign">
-                     <div class="overlay">
-                      <div class="portfolio-item-meta">
-      					   <h5>Fundraisers</h5>
-                           <p>Chipotle (9/27)!</p>
-      					</div>
-                     </div>
-                     <div class="link-icon"><i class="fa fa-plus"></i></div>
-                  </a>
-               </div>
-         	</div> <!-- item end -->
-
-            <div class="bgrid folio-item">
-               <div class="item-wrap">
-                  <a href="#modal-03">
-                     <img src="images/portfolio/beetle.jpg" alt="Beetle">                        
-                     <div class="overlay">
-                      <div class="portfolio-item-meta">
-      					   <h5>XP Coding and Consulting</h5>
-                           <p>Workshop opportunities and more!</p>
-      					</div>
-                     </div>
-                     <div class="link-icon"><i class="fa fa-plus"></i></div>
-                  </a>
-               </div>
-         	</div> <!-- item end -->
-
-            <div class="bgrid folio-item">
-               <div class="item-wrap">
-                  <a href="#modal-04">
-                     <img src="images/portfolio/banjo-player.jpg" alt="Banjo Player">
-                     <div class="overlay">
-                      <div class="portfolio-item-meta">
-      					   <h5>Girls Who Code</h5>
-                           <p>Increasing STEM representation for women and non-binary people!</p>
-      					</div>
-                     </div>
-                     <div class="link-icon"><i class="fa fa-plus"></i></div>
-                  </a>
-               </div>
-         	</div> <!-- item end -->
-
-            <div class="bgrid folio-item">
-               <div class="item-wrap">
-                  <a href="#modal-05">
-                   <img src="images/portfolio/lighthouse.jpg" alt="Lighthouse">
-                     <div class="overlay">
-                      <div class="portfolio-item-meta">
-      					   <h5>Lighthouse</h5>
-                           <p>Web Development</p>
-      					</div>
-                     </div>
-                     <div class="link-icon"><i class="fa fa-plus"></i></div>
-                  </a>
-               </div>
-         	</div> <!-- item end -->
-
-            <div class="bgrid folio-item">
-               <div class="item-wrap">
-                  <a href="#modal-06">
-                     <img src="images/portfolio/girl.jpg" alt="Girl Stuff">
-                     <div class="overlay">
-                      <div class="portfolio-item-meta">
-      					   <h5>Girl Stuff</h5>
-                           <p>Photography</p>
-      					</div>
-                     </div>
-                     <div class="link-icon"><i class="fa fa-plus"></i></div>
-                  </a>
-               </div>
-         	</div> <!-- item end -->
-
-            <div class="bgrid folio-item">
-               <div class="item-wrap">
-                  <a href="#modal-07">                        
-                     <img src="images/portfolio/coffee.jpg" alt="Coffee Cup">                       
-                     <div class="overlay">
-                      <div class="portfolio-item-meta">
-      					   <h5>Coffee Cup</h5>
-                           <p>Branding</p>
-      					</div>
-                     </div>
-                     <div class="link-icon"><i class="fa fa-plus"></i></div>
-                  </a>
-               </div>
-         	</div>  <!-- item end -->
-
-            <div class="bgrid folio-item">
-               <div class="item-wrap">
-                  <a href="#modal-08">
-                     <img src="images/portfolio/judah.jpg" alt="Judah">
-                     <div class="overlay">
-                      	<div class="portfolio-item-meta">
-        					      <h5>Judah</h5>
-                           <p>Webdesign</p>
-        					   </div>
-                     </div>
-                     <div class="link-icon"><i class="fa fa-plus"></i></div>
-                  </a>
-               </div>
-       		</div>  <!-- item end -->
-
-         </div> <!-- end portfolio-wrapper -->
-         
-
-         <!-- modal popup
-   		========================================================= -->
-         <div id="modal-01" class="popup-modal mfp-hide">
-
-		      <div class="media">
-      		<img src="images/portfolio/modals/m-underwater.jpg" alt="Underwater" />
-      	</div>
-
-		      <div class="description-box">
-			     <h4>Underwater</h4>
-			     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories">Videography</span>
-		      </div>
-
-            <div class="link-box group">
-            	<a href="http://www.behance.net">Details</a>
-            	<a href="#" class="popup-modal-dismiss">Close</a>         
+        <div class="cards">
+          <article class="program" data-aos="fade-up" data-aos-delay="100">
+            <div class="thumb"><img src="images/portfolio/underwater.jpg" alt="Courses"></div>
+            <div class="body">
+              <h4>Courses & Prep</h4>
+              <p>AP/dual-credit guidance, study groups, and curated resources to help you thrive in CS classes.</p>
             </div>
+          </article>
 
-	      </div><!-- modal-01 end -->
-
-         <div id="modal-02" class="popup-modal mfp-hide">
-
-		      <div class="media">
-      		<img src="images/portfolio/modals/m-hotel.jpg" alt="Hotel Sign" />
-      	</div>
-
-		      <div class="description-box">
-			     <h4>Hotel Sign</h4>
-			     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories">Branding, Web Development</span>
-		      </div>
-
-            <div class="link-box">            	
-               <a href="http://www.behance.net">Details</a>
-		         <a href="#" class="popup-modal-dismiss">Close</a>
+          <article class="program" data-aos="fade-up" data-aos-delay="140">
+            <div class="thumb"><img src="images/portfolio/beetle.jpg" alt="XP Coding"></div>
+            <div class="body">
+              <h4>XP Coding & Consulting</h4>
+              <p>Workshops, client-style projects, and portfolio pieces with mentorship from peers and partners.</p>
             </div>
+          </article>
 
-	      </div><!-- modal-02 end -->
-
-         <div id="modal-03" class="popup-modal mfp-hide">
-
-		      <div class="media">
-      		<img src="images/portfolio/modals/m-beetle.jpg" alt="" />
-      	</div>
-
-		      <div class="description-box">
-			     <h4>Beetle</h4>
-			     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories">Webdesign</span>
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net">Details</a>
-		         <a href="#" class="popup-modal-dismiss">Close</a>
+          <article class="program" data-aos="fade-up" data-aos-delay="180">
+            <div class="thumb"><img src="images/portfolio/banjo-player.jpg" alt="GWC"></div>
+            <div class="body">
+              <h4>Girls Who Code @ VHHS</h4>
+              <p>Inclusive space and curriculum focused on representation and belonging in tech.</p>
             </div>
+          </article>
 
-	      </div><!-- modal-03 end -->
-
-			<div id="modal-04" class="popup-modal mfp-hide">
-
-		      <div class="media">
-      		<img src="images/portfolio/modals/m-banjo-player.jpg" alt="" />
-      	</div>
-
-		      <div class="description-box">
-			     <h4>Banjo Player</h4>			      
-
-			     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-
-			     <div class="categories">Photography</div>
-               
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net">Details</a>
-		         <a href="#" class="popup-modal-dismiss">Close</a>
+          <article class="program" data-aos="fade-up" data-aos-delay="220">
+            <div class="thumb"><img src="images/portfolio/lighthouse.jpg" alt="Web Dev"></div>
+            <div class="body">
+              <h4>Web & App Dev</h4>
+              <p>Design and build modern websites or apps. Learn frontend, backend, and deployment basics.</p>
             </div>
+          </article>
 
-	      </div><!-- modal-04 end -->
-
-	      <div id="modal-05" class="popup-modal slider mfp-hide">	
-
-	      	<div class="media">
-      		<img src="images/portfolio/modals/m-lighthouse.jpg" alt="" />
-      	</div>      
-
-		      <div class="description-box">
-			     <h4>Lighthouse</h4>		      
-
-			     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-
-			     <div class="categories">Web Development</div>
-               
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net">Details</a>
-		         <a href="#" class="popup-modal-dismiss">Close</a>
-            </div>		      
-
-	      </div><!-- modal-05 end -->
-
-	      <div id="modal-06" class="popup-modal mfp-hide">
-
-		      <div class="media">
-      		<img src="images/portfolio/modals/m-girl.jpg" alt="" />
-      	</div>	
-
-		      <div class="description-box">
-			     <h4>Girl Stuff</h4>			      
-
-			     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-
-			     <div class="categories">Photography</div>
-               
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net">Details</a>
-		         <a href="#" class="popup-modal-dismiss">Close</a>
+          <article class="program" data-aos="fade-up" data-aos-delay="260">
+            <div class="thumb"><img src="images/portfolio/coffee.jpg" alt="Workshops"></div>
+            <div class="body">
+              <h4>Workshops</h4>
+              <p>Short, practical sessions — Git, HTML/CSS/JS, Python, APIs, data, AI tools, and more.</p>
             </div>
+          </article>
 
-	      </div><!-- modal-06 end -->
-
-	      <div id="modal-07" class="popup-modal mfp-hide">
-
-		      <div class="media">
-      		<img src="images/portfolio/modals/m-coffee.jpg" alt="" />
-      	</div>	
-
-		      <div class="description-box">
-			     <h4>Coffee Cup</h4>			      
-
-			     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-
-			     <div class="categories">Branding</div>
-               
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net">Details</a>
-		         <a href="#" class="popup-modal-dismiss">Close</a>
+          <article class="program" data-aos="fade-up" data-aos-delay="300">
+            <div class="thumb"><img src="images/portfolio/judah.jpg" alt="Showcase"></div>
+            <div class="body">
+              <h4>D128 STEAM Showcase</h4>
+              <p>Submit your project, present to judges, and earn recognition across STEAM divisions.</p>
             </div>
-
-	      </div><!-- modal-07 end -->
-
-	      <div id="modal-08" class="popup-modal mfp-hide">
-
-		      <div class="media">
-      		<img src="images/portfolio/modals/m-judah.jpg" alt="" />
-      	</div>	
-
-		      <div class="description-box">
-			     <h4>Judah</h4>			      
-
-			     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-
-			     <div class="categories">Webdesign</div>
-               
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net">Details</a>
-		         <a href="#" class="popup-modal-dismiss">Close</a>
-            </div>
-
-	      </div><!-- modal-08 end -->
-
-      </div>  <!-- end row -->
-
-   </section> <!-- end portfolio -->
-
-
-   <!-- Services Section
-   ================================================== -->
-   <section id="services">
-
-   	<div class="row section-head">
-
-      	<div class="twelve columns">
-
-      		<h1>More about our services and opportunities!<span>.</span></h1>
-
-	         <hr />      	         
-    
-	         <p>The VHCS Computer Science Club offers a dynamic environment where students can explore coding, participate in competitions, and engage with guest speakers from the tech industry. We provide hands-on workshops, collaborative projects, and guidance to help students build a strong foundation in computer science, equipping them with the skills and knowledge to excel in competitions and prepare for a successful future as CS majors.
-	         </p>
-
-	      </div>
-
-   	</div> <!-- end section-head -->
-
-      <div class="row mobile-no-padding">      	
-
-	      <div class="service-list bgrid-third s-bgrid-half tab-bgrid-whole group">
-
-	      	<div class="bgrid">	               
-
-	            <h3>Girls Who Code.</h3>
-
-	            <div class="service-content">	                  
-		            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	         		</p> 
-	         	</div>  
-
-				</div> <!-- end bgrid -->
-
-				<div class="bgrid">	              
-
-	            <h3>XPerience Coding LLC.</h3>                  
-
-	            <div class="service-content">	                  
-		            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	         		</p> 
-	            </div>	              
-
-			   </div> <!-- end bgrid -->
-
-			   <div class="bgrid">	              
-
-	            <h3>Samsung Solve For Tomorrow</h3>
-
-	            <div class="service-content">		                  
-		            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	        			</p> 
-	            </div> 	               
-
-			   </div> <!-- end bgrid -->
-
-			   <div class="bgrid">
-
-	            <h3>Workshops.</h3>
-
-	            <div class="service-content">	                  
-		            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	        			</p> 
-	            </div>	               
-
-			   </div> <!-- end bgrid -->
-
-			   <div class="bgrid">	               
-
-	            <h3>CS Courses.</h3>
-
-	            <div class="service-content">
-		            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	        			</p>	               
-
-			   </div> <!-- end bgrid -->
-
-	      </div> <!-- end service-list -->	      
-  
-      </div> <!-- end row -->      
-
-   </section> <!-- end services -->
-
-
-   <!-- Call To Action Section
-   ================================================== -->
-   <section id="call-to-action">	       
-
-		   <div class="row section-ads">
-
-		      <div class="twelve columns">		         		
-
-			      <h2><a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT">Styleshout Recommends Dreamhost<span>.</span></a></h2>
-
-			      <p>
-			      Looking for an awesome and reliable webhosting? Try <a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT"><span>DreamHost</span></a>.
-					Get <span>$50 off</span> when you sign up with the promocode <span>styleshout</span>. 
-					<!-- Simply type	the promocode in the box labeled “Promo Code” when placing your order. -->					
-					</p>
-
-					<div class="action">
-			         <a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT" >Sign Up Now</a>
-         		</div>
-
-			   </div>
-
-		   </div> <!-- end section-ads -->		         	         
-  
-   </section> <!-- end call-to-action -->  
-
-
-   <!-- Footer
-   ================================================== -->
-   <footer>
-
-      <div class="row">  
-
-      	<div class="twelve columns content group">
-      		
-				<ul class="social-links">
-               <li><a href="https://www.instagram.com/yourinstagramaccount" target="_blank"><i class="fa fa-instagram"></i></a></li>
-            </ul>
-
-            <hr />
-
-            <div class="info">
-
-            	<div class="footer-logo"></div>
-
-	            <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-	            Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-	            nibh id elit. 
-	            </p>	        
-   
-	         </div>
-
-      	</div>           
-
-         <ul class="copyright">
-         	<li>&copy; Copyright 2024 VHCS.</li> 
-         	<li>Design by <a href="http://www.styleshout.com/">Styleshout.</a>.</li>
-         </ul>
-
-         <div id="go-top">
-            <a class="smoothscroll" title="Back to Top" href="#hero">Back to Top<i class="fa fa-angle-up"></i></a>
-         </div>
-
-      </div> <!-- end row -->
-
-   </footer> <!-- end footer -->
-
-   <div id="preloader"> 
-       	<div id="loader"></div>
-   </div> 
-
-   <!-- Java Script
-   ================================================== --> 
-   <script src="js/jquery-1.11.3.min.js"></script>
-   <script src="js/jquery-migrate-1.2.1.min.js"></script>
-   <script src="js/jquery.flexslider-min.js"></script>
-   <script src="js/jquery.waypoints.min.js"></script>
-   <script src="js/jquery.validate.min.js"></script>
-   <script src="js/jquery.fittext.js"></script>
-   <script src="js/jquery.placeholder.min.js"></script>
-   <script src="js/jquery.magnific-popup.min.js"></script>  
-   <script src="js/main.js"></script>
-   
-   <!-- AOS JS -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-   <!-- Slick Carousel JS -->
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-
-   <script>
-     // Initialize AOS
-     AOS.init({
-       duration: 1000,
-       once: true
-     });
-
-     // Initialize Slick Carousel for Sponsors
-     $(document).ready(function(){
-       $('.sponsors-carousel').slick({
-         slidesToShow: 4,
-         slidesToScroll: 1,
-         autoplay: true,
-         autoplaySpeed: 2000,
-         arrows: false,
-         dots: false,
-         responsive: [
-           {
-             breakpoint: 1024,
-             settings: {
-               slidesToShow: 3,
-             }
-           },
-           {
-             breakpoint: 600,
-             settings: {
-               slidesToShow: 2,
-             }
-           },
-           {
-             breakpoint: 480,
-             settings: {
-               slidesToShow: 1,
-             }
-           }
-         ]
-       });
-
-       // Initialize Slick Carousel for Judges
-       $('.judges-carousel').slick({
-         slidesToShow: 3,
-         slidesToScroll: 1,
-         autoplay: true,
-         autoplaySpeed: 2500,
-         arrows: false,
-         dots: false,
-         responsive: [
-           {
-             breakpoint: 1024,
-             settings: {
-               slidesToShow: 2,
-             }
-           },
-           {
-             breakpoint: 600,
-             settings: {
-               slidesToShow: 1,
-             }
-           }
-         ]
-       });
-     });
-   </script>
-
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DARK CALL TO ACTION -->
+    <section class="darkband">
+      <div class="container">
+        <h2 class="section-title white-text" data-aos="fade-right">Ready to join?</h2>
+        <p class="lead" style="color:#ffffff; opacity:.98;" data-aos="fade-right" data-aos-delay="60">
+          Come to our next meeting or reach out — beginners welcome.
+        </p>
+        <div class="buttons" data-aos="fade-up" data-aos-delay="120">
+          <a class="btn btn-primary" href="contact-us.html"><i class="fa fa-calendar-o"></i> Contact Us</a>
+          <a class="btn btn-ghost" href="d128-steam-showcase.html"><i class="fa fa-star-o"></i> Explore STEAM Showcase</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="row">
+        <div class="twelve columns content group">
+          <ul class="social-links">
+            <li><a href="https://www.instagram.com/vhcsclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a></li>
+          </ul>
+          <hr style="border-color: rgba(255,255,255,0.15);" />
+          <div class="info"><div class="footer-logo"></div></div>
+        </div>
+        <ul class="copyright" style="color:#ffffff">
+          <li>© Copyright 2025 VHCS.</li>
+        </ul>
+        <div id="go-top">
+          <a class="smoothscroll" title="Back to Top" href="#hero" style="color:#ffffff">Back to Top <i class="fa fa-angle-up"></i></a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div id="preloader"><div id="loader"></div></div>
+
+  <!-- Scripts -->
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/jquery-migrate-1.2.1.min.js"></script>
+  <script src="js/jquery.flexslider-min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/jquery.fittext.js"></script>
+  <script src="js/jquery.placeholder.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    // (Optional) If you later add any .sponsors-carousel on the homepage:
+    $(function(){
+      $('.sponsors-carousel').slick({
+        slidesToShow: 4, slidesToScroll: 1, autoplay: true, autoplaySpeed: 2200,
+        arrows: false, dots: false, infinite: true, pauseOnHover: false,
+        responsive: [
+          { breakpoint: 1024, settings: { slidesToShow: 3 } },
+          { breakpoint: 720,  settings: { slidesToShow: 2 } },
+          { breakpoint: 520,  settings: { slidesToShow: 1 } }
+        ]
+      });
+    });
+  </script>
 </body>
-
 </html>
