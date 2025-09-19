@@ -17,7 +17,7 @@
    ================================================== -->
    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-   <!-- Fonts (clean, modern) -->
+   <!-- Fonts for content (header left untouched) -->
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
    <!-- CSS
@@ -53,68 +53,52 @@
         --card:#f1f5f9;            /* slate-100 */
         --brand:#ff7e5f;
         --brand-2:#feb47b;
+        --accent:#9b87f5;          /* gentle purple accent */
         --radius:16px;
         --maxw:1100px;
         --pad-section:88px;
       }
 
-      /* Global Typography */
-      html, body {
-          background: var(--bg);
-          color: var(--text);
-          font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-          line-height: 1.6;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
+      /* Keep header EXACTLY as original: no overrides here. */
+
+      /* Content wrapper uses Inter so header stays original */
+      #site-main, #site-main * {
+        font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
       }
 
-      h1, h2, h3 {
-          color: var(--text);
-          line-height: 1.2;
-          letter-spacing: -0.01em;
-          margin: 0 0 12px 0;
+      body {
+        background: var(--bg);
       }
 
-      h1 { font-weight: 800; }
-      h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; }
-      h3 { font-size: clamp(20px, 3vw, 28px); font-weight: 700; }
-
-      p, li { font-size: 1.05rem; color: var(--muted); }
-
+      /* Shared layout */
       .container{
         max-width: var(--maxw);
         margin: 0 auto;
         padding: 0 24px;
       }
 
-      /* Header */
-      #main-header{
-        background: rgba(255,255,255,0.9);
-        backdrop-filter: saturate(150%) blur(6px);
-        border-bottom: 1px solid #e2e8f0;
+      #site-main h1, #site-main h2, #site-main h3 {
+          color: var(--text);
+          line-height: 1.2;
+          letter-spacing: -0.01em;
+          margin: 0 0 12px 0;
       }
 
-      #main-header .row{
-        max-width: var(--maxw);
-        margin: 0 auto;
-        padding: 14px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
+      #site-main h1 { font-weight: 800; }
+      #site-main h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; position: relative; }
+      #site-main h3 { font-size: clamp(20px, 3vw, 28px); font-weight: 700; }
 
-      .logo a{
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        color: var(--text);
-      }
+      #site-main p, #site-main li { font-size: 1.06rem; color: var(--muted); }
 
-      #nav li a{
-        font-weight: 600;
-      }
-
-      .header-social a{
-        opacity: 0.9;
+      /* Decorative underline for section titles */
+      #site-main h2::after{
+        content:"";
+        display:block;
+        width: 64px;
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent), var(--brand));
+        margin-top: 10px;
       }
 
       /* HERO */
@@ -124,17 +108,27 @@
           place-items: center;
           text-align: center;
           position: relative;
-          padding: 80px 0;
+          padding: 88px 0;
           color: #fff;
           background: url("images/hero-background.gif") no-repeat center center / cover;
           overflow: hidden;
       }
 
-      /* subtle dark overlay for readability */
+      /* subtle dark overlay for readability + accent orbs */
       #hero-d128::before{
           content:"";
           position:absolute; inset:0;
-          background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55));
+          background: linear-gradient(180deg, rgba(0,0,0,0.46), rgba(0,0,0,0.62));
+      }
+      /* floating accent orbs for a professional, modern feel */
+      #hero-d128::after{
+          content:"";
+          position:absolute;
+          width: 820px; height: 820px;
+          right:-260px; top:-260px;
+          background: radial-gradient(closest-side, rgba(255,126,95,0.28), transparent 70%);
+          filter: blur(6px);
+          pointer-events: none;
       }
 
       #hero-d128 > * { position: relative; z-index: 1; }
@@ -146,17 +140,22 @@
           filter: drop-shadow(0 8px 24px rgba(0,0,0,0.25));
       }
 
+      /* Make main title WHITE */
       #hero-d128 h1 {
-          font-size: clamp(40px, 7vw, 72px);
+          font-size: clamp(44px, 7vw, 72px);
           margin-bottom: 12px;
           text-shadow: 0 8px 30px rgba(0,0,0,0.35);
+          color: #ffffff; /* explicit white */
       }
 
+      /* Subhead: make white & bolder + added sentence */
       #hero-d128 .subhead{
-          max-width: 760px;
-          margin: 0 auto 24px;
-          font-size: clamp(16px, 2.2vw, 18px);
-          opacity: 0.95;
+          max-width: 860px;
+          margin: 0 auto 28px;
+          font-size: clamp(18px, 2.2vw, 20px);
+          font-weight: 700;      /* more bold as requested */
+          color: #ffffff;        /* explicit white */
+          opacity: 0.98;
       }
 
       .buttons {
@@ -167,38 +166,54 @@
       }
 
       .btn{
-          display: inline-block;
-          padding: 14px 26px;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 16px 28px; /* slightly larger buttons */
           border-radius: 999px;
-          font-weight: 700;
+          font-weight: 800;
           font-size: 1rem;
           letter-spacing: 0.01em;
-          transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+          transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
           will-change: transform;
           outline: none;
+          box-shadow: 0 10px 24px rgba(2,6,23,0.12);
       }
+      .btn i{ font-size: 1.05em; }
+
       .btn:focus-visible{ box-shadow: 0 0 0 3px rgba(255,255,255,0.5); }
 
       .btn-primary{
           background: var(--brand);
           color:#fff;
       }
-      .btn-primary:hover{ transform: translateY(-2px); background: var(--brand-2); }
+      .btn-primary:hover{ transform: translateY(-2px) scale(1.02); background: var(--brand-2); }
 
       .btn-ghost{
           background: rgba(255,255,255,0.12);
           color: #fff;
           border: 1px solid rgba(255,255,255,0.25);
       }
-      .btn-ghost:hover{ transform: translateY(-2px); background: rgba(255,255,255,0.2); }
+      .btn-ghost:hover{ transform: translateY(-2px) scale(1.02); background: rgba(255,255,255,0.2); }
 
-      /* SECTION: Introduction */
       section{
         padding: var(--pad-section) 0;
       }
 
+      /* INTRODUCTION */
       #introduction{
         background: var(--surface);
+        position: relative;
+        overflow: hidden;
+      }
+      /* subtle gradient mesh */
+      #introduction::before{
+        content:"";
+        position:absolute; inset:-10%;
+        background:
+          radial-gradient(600px 320px at 10% 20%, rgba(155,135,245,0.18), transparent 60%),
+          radial-gradient(700px 360px at 90% 80%, rgba(255,126,95,0.16), transparent 65%);
+        pointer-events: none;
       }
 
       #introduction .intro-grid{
@@ -213,7 +228,7 @@
 
       .kicker{
         display:inline-block;
-        font-weight: 700;
+        font-weight: 800;
         color: var(--brand);
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -232,7 +247,7 @@
         border: 1px solid #e2e8f0;
         border-radius: var(--radius);
         padding: 20px;
-        box-shadow: 0 6px 24px rgba(15, 23, 42, 0.04);
+        box-shadow: 0 6px 24px rgba(15, 23, 42, 0.05);
       }
 
       /* Responsive Iframe (video/slides) */
@@ -244,6 +259,7 @@
           border-radius: 14px;
           overflow: hidden;
           box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+          background: #000;
       }
       .responsive-iframe iframe{
           position:absolute; inset:0;
@@ -255,6 +271,16 @@
       #sponsors{
         background: #0b1220; /* deep slate */
         color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      #sponsors::before{
+        content:"";
+        position:absolute; inset:-10%;
+        background:
+          radial-gradient(600px 320px at 20% 10%, rgba(155,135,245,0.18), transparent 60%),
+          radial-gradient(700px 360px at 80% 90%, rgba(255,126,95,0.14), transparent 65%);
+        pointer-events: none;
       }
 
       .sponsors-wrap{
@@ -291,10 +317,16 @@
       #previous-winners{
         background: #0b1220;
         color: #fff;
+        position: relative;
+        overflow: hidden;
       }
-
-      #previous-winners .container > p{
-        color: rgba(255,255,255,0.8);
+      #previous-winners::before{
+        content:"";
+        position:absolute; inset:-10%;
+        background:
+          radial-gradient(520px 280px at 15% 85%, rgba(155,135,245,0.18), transparent 60%),
+          radial-gradient(640px 320px at 85% 15%, rgba(255,126,95,0.16), transparent 65%);
+        pointer-events: none;
       }
 
       /* Rubric / Timeline / Prizes */
@@ -321,11 +353,11 @@
         border-radius: 12px;
         padding: 10px 14px;
         box-shadow: 0 8px 20px rgba(15,23,42,0.05);
-        font-weight: 700;
+        font-weight: 800;
         color: var(--text);
       }
 
-      /* Footer */
+      /* Footer kept with Inter because it's part of site-main visually */
       footer{
         background: var(--surface);
         border-top: 1px solid #e2e8f0;
@@ -337,22 +369,15 @@
         padding: 28px 24px;
       }
 
-      /* Accessibility */
-      a:focus-visible{ outline: 3px solid #94a3b8; outline-offset: 2px; border-radius: 6px; }
-
-      /* Minor utilities (keep legacy color classes if used elsewhere) */
+      /* Utilities */
       .white-text{ color:#fff; }
-      .red-text{ color:#ff0000; }
-      .blue-text{ color:#0000ff; }
-      .green-text{ color:#008000; }
-      .orange-text{ color:#ffa500; }
-      .purple-text{ color:#800080; }
 
-      /* Slick dots hidden (we use clean strip) */
+      /* Slick dots hidden */
       .slick-dots{ display:none !important; }
 
       @media (max-width: 768px){
         .buttons{ gap:12px; }
+        .btn{ padding: 14px 22px; }
       }
    </style>
 
@@ -360,15 +385,18 @@
 
 <body>
 
-   <!-- header
+   <!-- header (REVERTED EXACTLY AS ORIGINAL MARKUP/STYLES VIA YOUR CSS FILES)
    ================================================== -->
    <header id="main-header">
+
       <div class="row">
+
          <div class="logo">
             <a href="index.html">VHCS</a>
          </div>
 
          <nav id="nav-wrap">         
+            
             <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
             	<span class="menu-icon">Menu</span>
             </a>
@@ -378,252 +406,262 @@
 
             <ul id="nav" class="nav">
                <li><a class="smoothscroll" href="index.html#hero-d128">Home</a></li>
-               <li><a href="https://girlswhocode.com/" target="_blank" rel="noopener">Girls Who Code</a></li>
+               <li><a href="https://girlswhocode.com/" target="_blank">Girls Who Code</a></li>
                <li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
     		   <li><a href="contact-us.html">Contact Us</a></li>
-            </ul>
-         </nav>
+
+            </ul> <!-- end #nav -->
+
+         </nav> <!-- end #nav-wrap -->
 
          <ul class="header-social">
-            <li><a href="https://www.instagram.com/yourinstagramaccount" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a></li>
+               <li><a href="https://www.instagram.com/yourinstagramaccount" target="_blank"><i class="fa fa-instagram"></i></a></li>
          </ul>      
-      </div>
-   </header>
 
-   <!-- HERO
-   ================================================== -->
-   <section id="hero-d128">	
-      <div class="logo-image" data-aos="fade-down"></div>
-      <h1 data-aos="zoom-in">D128 STEAM Showcase</h1>
-      <p class="subhead" data-aos="fade-up" data-aos-delay="80">
-        Celebrate innovation across Science, Tech, Engineering, Entrepreneurship, Equity, Arts, and Math.
-      </p>
-      <div class="buttons" data-aos="fade-up" data-aos-delay="160">
-         <!-- UPDATED: external link to your Google Slides (opens in a new tab) -->
-         <a class="btn btn-primary" href="https://docs.google.com/presentation/d/1o-pfEW6mALnnluv6OzXKs_BmJDEMTSlQeL8nLd7VNBc/edit?slide=id.p&pli=1#slide=id.p" target="_blank" rel="noopener">
-           Meet the 2025 Winners
-         </a>
-         <!-- Optional secondary anchor to scroll down to on-page embed -->
-         <a class="btn btn-ghost" href="#previous-winners">View Winners on this page</a>
       </div>
-   </section>
 
-   <!-- INTRO
-   ================================================== -->
-   <section id="introduction">
-     <div class="container">
-       <div class="intro-grid" data-aos="fade-up">
-         <div>
-           <span class="kicker">Show us your STEAM skills</span>
-           <h2>Solve real problems. Get recognized.</h2>
-           <p class="lead">
-             Whether it’s Science, Tech, Engineering, Entrepreneurship, Equity, Arts, or Math, now’s your chance to be rewarded for impact. You can even submit a project you’ve already built.
-           </p>
-           <div class="card" style="margin-top:18px;">
-             <p style="margin:0;">
-               Open to all VHHS and LHS students. Local businesses evaluate projects, and the top entries in each division earn prizes.
+   </header> <!-- end header -->
+
+   <!-- Everything below uses refined modern styling without touching header -->
+   <main id="site-main">
+
+     <!-- HERO
+     ================================================== -->
+     <section id="hero-d128">	
+        <div class="logo-image" data-aos="fade-down"></div>
+        <h1 data-aos="zoom-in">D128 STEAM Showcase</h1>
+        <p class="subhead" data-aos="fade-up" data-aos-delay="80">
+          Celebrate innovation across Science, Tech, Engineering, Entrepreneurship, Equity, Arts, and Math.
+          <br/>The 2026 STEAM Showcase competition is coming soon.
+        </p>
+        <div class="buttons" data-aos="fade-up" data-aos-delay="160">
+           <!-- UPDATED: external link to your Google Slides (new tab) -->
+           <a class="btn btn-primary" href="https://docs.google.com/presentation/d/1o-pfEW6mALnnluv6OzXKs_BmJDEMTSlQeL8nLd7VNBc/edit?slide=id.p&pli=1#slide=id.p" target="_blank" rel="noopener">
+             <i class="fa fa-trophy" aria-hidden="true"></i>
+             Meet the 2025 Winners
+           </a>
+           <!-- Secondary anchor to the on-page embed -->
+           <a class="btn btn-ghost" href="#previous-winners">
+             <i class="fa fa-play-circle" aria-hidden="true"></i>
+             View Winners on this page
+           </a>
+        </div>
+     </section>
+
+     <!-- INTRO
+     ================================================== -->
+     <section id="introduction">
+       <div class="container">
+         <div class="intro-grid" data-aos="fade-up">
+           <div>
+             <span class="kicker">Show us your STEAM skills</span>
+             <h2>Solve real problems. Get recognized.</h2>
+             <p class="lead">
+               Whether it’s Science, Tech, Engineering, Entrepreneurship, Equity, Arts, or Math, now’s your chance to be rewarded for impact. You can even submit a project you’ve already built.
              </p>
+             <div class="card" style="margin-top:18px;">
+               <p style="margin:0;">
+                 Open to all VHHS and LHS students. Local businesses evaluate projects, and the top entries in each division earn prizes.
+               </p>
+             </div>
            </div>
-         </div>
-         <div data-aos="fade-left" data-aos-delay="100">
-           <div class="responsive-iframe">
-              <iframe 
-                  src="https://www.youtube.com/embed/vCjB8DFjYh8?si=vn8Y812mqKtxHGdf" 
-                  title="Showcase your STEAM skills video" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  referrerpolicy="strict-origin-when-cross-origin" 
-                  allowfullscreen
-                  loading="lazy">
-              </iframe>
+           <div data-aos="fade-left" data-aos-delay="100">
+             <div class="responsive-iframe">
+                <iframe 
+                    src="https://www.youtube.com/embed/vCjB8DFjYh8?si=vn8Y812mqKtxHGdf" 
+                    title="Showcase your STEAM skills video" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+             </div>
            </div>
          </div>
        </div>
-     </div>
-   </section>
+     </section>
 
-   <!-- SPONSORS
-   ================================================== -->
-   <section id="sponsors">
-     <div class="container">
-       <h2 data-aos="fade-right" class="white-text">Our Sponsors</h2>
-       <p class="slim-text" data-aos="fade-right" data-aos-delay="60">Thank you to our partners for supporting student innovation.</p>
+     <!-- SPONSORS
+     ================================================== -->
+     <section id="sponsors">
+       <div class="container">
+         <h2 data-aos="fade-right" class="white-text">Our Sponsors</h2>
+         <p class="slim-text white-text" data-aos="fade-right" data-aos-delay="60" style="opacity:.85">Thank you to our partners for supporting student innovation.</p>
 
-       <div class="sponsors-wrap">
-         <div class="sponsors-carousel">
-           <!-- Sponsor Item 1 -->
-           <div class="carousel-item" data-aos="zoom-in">
-              <div class="image-box">
-                 <a href="https://www.d128.org/vhhs/about/administration" target="_blank" rel="noopener">
-                    <img src="images/sponsor1.png" alt="Sponsor 1">
-                 </a>
+         <div class="sponsors-wrap">
+           <div class="sponsors-carousel">
+             <!-- Sponsor Item 1 -->
+             <div class="carousel-item" data-aos="zoom-in">
+                <div class="image-box">
+                   <a href="https://www.d128.org/vhhs/about/administration" target="_blank" rel="noopener">
+                      <img src="images/sponsor1.png" alt="Sponsor 1">
+                   </a>
+                </div>
+             </div>
+             <!-- Sponsor Item 2 -->
+             <div class="carousel-item" data-aos="zoom-in">
+                <div class="image-box">
+                   <a href="https://xperiencecoding.github.io/xperiencecoding/" target="_blank" rel="noopener">
+                      <img src="images/sponsor2.jpeg" alt="Sponsor 2">
+                   </a>
+                </div>
+             </div>
+             <!-- Sponsor Item 3 -->
+             <div class="carousel-item" data-aos="zoom-in">
+                <div class="image-box">
+                   <a href="https://printpal.io" target="_blank" rel="noopener">
+                      <img src="images/sponsor3.jpeg" alt="Sponsor 3">
+                   </a>
+                </div>
+             </div>
+             <!-- Sponsor Item 4 -->
+             <div class="carousel-item" data-aos="zoom-in">
+                <div class="image-box">
+                   <a href="https://www.d128.org" target="_blank" rel="noopener">
+                      <img src="images/sponsor4.jpeg" alt="Sponsor 4">
+                   </a>
+                </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+
+     <!-- PAST WINNERS (with embedded slideshow)
+     ================================================== -->
+     <section id="previous-winners">
+       <div class="container">
+         <h2 data-aos="fade-right" class="white-text">Past Winners</h2>
+         <p data-aos="fade-right" data-aos-delay="60" style="color:rgba(255,255,255,.85)">Browse highlights from previous showcases.</p>
+
+         <div class="responsive-iframe" data-aos="fade-up" data-aos-delay="160">
+            <!-- UPDATED: embed uses your Slides file ID -->
+            <iframe 
+              src="https://docs.google.com/presentation/d/1o-pfEW6mALnnluv6OzXKs_BmJDEMTSlQeL8nLd7VNBc/embed?start=false&loop=false&delayms=2000" 
+              allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy">
+            </iframe>
+         </div>
+       </div>
+     </section>
+
+     <!-- RUBRIC
+     ================================================== -->
+     <section id="rubric">
+       <div class="container">
+         <h2 data-aos="fade-right">Rubric</h2>
+         <p class="slim-text" data-aos="fade-right" data-aos-delay="60">Clear, fair criteria used by industry professionals.</p>
+
+         <div class="stack" style="margin-top: 26px;">
+           <div class="rubric-item" data-aos="fade-up" data-aos-delay="100">
+             <h3>Judging</h3>
+             <p>Evaluated by business professionals from relevant industries.</p>
+           </div>
+
+           <div class="rubric-item" data-aos="fade-up" data-aos-delay="160">
+             <h3>Identifying the Problem (20 pt)</h3>
+             <p>How pertinent and clearly framed is the problem?</p>
+           </div>
+
+           <div class="rubric-item" data-aos="fade-up" data-aos-delay="220">
+             <h3>The Solution (30 pt)</h3>
+             <p>How feasible, logical, and impactful is your project?</p>
+           </div>
+
+           <div class="rubric-item" data-aos="fade-up" data-aos-delay="280">
+             <h3>Creativity / Innovation (20 pt)</h3>
+             <p>How original, bold, and inventive is your approach?</p>
+           </div>
+
+           <div class="rubric-item" data-aos="fade-up" data-aos-delay="340">
+             <h3>Fits Theme (20 pt)</h3>
+             <p>How well does your project align with the STEAM division you selected?</p>
+           </div>
+
+           <div class="rubric-item" data-aos="fade-up" data-aos-delay="400">
+             <h3>Presentation Quality (10 pt)</h3>
+             <p>How professional, engaging, and well-structured is your presentation?</p>
+           </div>
+
+           <div class="rubric-item" data-aos="fade-up" data-aos-delay="460">
+             <h3>Additional Notes</h3>
+             <p>* Art is graded primarily on Creativity and Presentation.</p>
+             <p>* Projects placing highly across 3 divisions can win the best prizes!</p>
+           </div>
+         </div>
+       </div>
+     </section>
+
+     <!-- PRIZES
+     ================================================== -->
+     <section id="prizes">
+       <div class="container" style="text-align:center;">
+         <h2 data-aos="fade-right">Prizes</h2>
+         <p class="slim-text" data-aos="fade-right" data-aos-delay="60">More details soon — here’s a preview:</p>
+         <p data-aos="fade-up" data-aos-delay="120" style="margin-top: 16px;">
+           Top prize: <span class="prize-callout">$500 scholarship</span><br/>
+           Total prizes: at least <strong>$4,000</strong> in value.
+         </p>
+       </div>
+     </section>
+
+     <!-- TIMELINE
+     ================================================== -->
+     <section id="timeline">
+       <div class="container">
+         <h2 data-aos="fade-right">Our Timeline</h2>
+         <div class="stack" style="margin-top: 26px;">
+           <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+             <h3>Now</h3>
+             <p>Complete the interest form (helps us plan judges per division).</p>
+           </div>
+           <div class="timeline-item" data-aos="fade-up" data-aos-delay="160">
+             <h3>12/16 – 1/6</h3>
+             <p>Submit your project and a video (up to 2 minutes) showcasing it.</p>
+           </div>
+           <div class="timeline-item" data-aos="fade-up" data-aos-delay="220">
+             <h3>1/8</h3>
+             <p>Top 3–4 in each division invited to present to judges on 1/10.</p>
+           </div>
+           <div class="timeline-item" data-aos="fade-up" data-aos-delay="280">
+             <h3>1/10</h3>
+             <p>Periods 4–6: VHHS presentations during lunch periods.</p>
+           </div>
+           <div class="timeline-item" data-aos="fade-up" data-aos-delay="340">
+             <h3>1/10</h3>
+             <p>End of 6th Period: Award Ceremony at VHHS.</p>
+           </div>
+         </div>
+       </div>
+     </section>
+
+     <!-- Footer
+     ================================================== -->
+     <footer>
+        <div class="row">  
+           <div class="twelve columns content group">
+              <ul class="social-links">
+                 <li><a href="https://www.instagram.com/yourinstagramaccount" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a></li>
+              </ul>
+
+              <hr />
+
+              <div class="info">
+                 <div class="footer-logo"></div>
               </div>
+           </div>           
+
+           <ul class="copyright">
+              <li>&copy; Copyright 2024 VHCS.</li> 
+              <li>Design by <a href="http://www.styleshout.com/">Styleshout</a>.</li>
+           </ul>
+
+           <div id="go-top">
+              <a class="smoothscroll" title="Back to Top" href="#hero-d128">Back to Top <i class="fa fa-angle-up"></i></a>
            </div>
-           <!-- Sponsor Item 2 -->
-           <div class="carousel-item" data-aos="zoom-in">
-              <div class="image-box">
-                 <a href="https://xperiencecoding.github.io/xperiencecoding/" target="_blank" rel="noopener">
-                    <img src="images/sponsor2.jpeg" alt="Sponsor 2">
-                 </a>
-              </div>
-           </div>
-           <!-- Sponsor Item 3 -->
-           <div class="carousel-item" data-aos="zoom-in">
-              <div class="image-box">
-                 <a href="https://printpal.io" target="_blank" rel="noopener">
-                    <img src="images/sponsor3.jpeg" alt="Sponsor 3">
-                 </a>
-              </div>
-           </div>
-           <!-- Sponsor Item 4 -->
-           <div class="carousel-item" data-aos="zoom-in">
-              <div class="image-box">
-                 <a href="https://www.d128.org" target="_blank" rel="noopener">
-                    <img src="images/sponsor4.jpeg" alt="Sponsor 4">
-                 </a>
-              </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
+        </div>
+     </footer>
 
-   <!-- PAST WINNERS (with embedded slideshow)
-   ================================================== -->
-   <section id="previous-winners">
-     <div class="container">
-       <h2 data-aos="fade-right" class="white-text">Past Winners</h2>
-       <p data-aos="fade-right" data-aos-delay="60">Browse highlights from previous showcases.</p>
-
-       <div class="responsive-iframe" data-aos="fade-up" data-aos-delay="160">
-          <!-- UPDATED: embed uses your Slides file ID -->
-          <!-- Tip: publishing to the web can improve loading/permissions for viewers -->
-          <iframe 
-            src="https://docs.google.com/presentation/d/1o-pfEW6mALnnluv6OzXKs_BmJDEMTSlQeL8nLd7VNBc/embed?start=false&loop=false&delayms=2000" 
-            allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy">
-          </iframe>
-       </div>
-
-       <!-- If you prefer the auto-published embed, use:
-       File > Publish to the web > Embed, then paste that URL in the iframe src above. -->
-     </div>
-   </section>
-
-   <!-- RUBRIC
-   ================================================== -->
-   <section id="rubric">
-     <div class="container">
-       <h2 data-aos="fade-right">Rubric</h2>
-       <p class="slim-text" data-aos="fade-right" data-aos-delay="60">Clear, fair criteria used by industry professionals.</p>
-
-       <div class="stack" style="margin-top: 26px;">
-         <div class="rubric-item" data-aos="fade-up" data-aos-delay="100">
-           <h3>Judging</h3>
-           <p>Evaluated by business professionals from relevant industries.</p>
-         </div>
-
-         <div class="rubric-item" data-aos="fade-up" data-aos-delay="160">
-           <h3>Identifying the Problem (20 pt)</h3>
-           <p>How pertinent and clearly framed is the problem?</p>
-         </div>
-
-         <div class="rubric-item" data-aos="fade-up" data-aos-delay="220">
-           <h3>The Solution (30 pt)</h3>
-           <p>How feasible, logical, and impactful is your project?</p>
-         </div>
-
-         <div class="rubric-item" data-aos="fade-up" data-aos-delay="280">
-           <h3>Creativity / Innovation (20 pt)</h3>
-           <p>How original, bold, and inventive is your approach?</p>
-         </div>
-
-         <div class="rubric-item" data-aos="fade-up" data-aos-delay="340">
-           <h3>Fits Theme (20 pt)</h3>
-           <p>How well does your project align with the STEAM division you selected?</p>
-         </div>
-
-         <div class="rubric-item" data-aos="fade-up" data-aos-delay="400">
-           <h3>Presentation Quality (10 pt)</h3>
-           <p>How professional, engaging, and well-structured is your presentation?</p>
-         </div>
-
-         <div class="rubric-item" data-aos="fade-up" data-aos-delay="460">
-           <h3>Additional Notes</h3>
-           <p>* Art is graded primarily on Creativity and Presentation.</p>
-           <p>* Projects placing highly across 3 divisions can win the best prizes!</p>
-         </div>
-       </div>
-     </div>
-   </section>
-
-   <!-- PRIZES
-   ================================================== -->
-   <section id="prizes">
-     <div class="container" style="text-align:center;">
-       <h2 data-aos="fade-right">Prizes</h2>
-       <p class="slim-text" data-aos="fade-right" data-aos-delay="60">More details soon — here’s a preview:</p>
-       <p data-aos="fade-up" data-aos-delay="120" style="margin-top: 16px;">
-         Top prize: <span class="prize-callout">$500 scholarship</span><br/>
-         Total prizes: at least <strong>$4,000</strong> in value.
-       </p>
-     </div>
-   </section>
-
-   <!-- TIMELINE
-   ================================================== -->
-   <section id="timeline">
-     <div class="container">
-       <h2 data-aos="fade-right">Our Timeline</h2>
-       <div class="stack" style="margin-top: 26px;">
-         <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
-           <h3>Now</h3>
-           <p>Complete the interest form (helps us plan judges per division).</p>
-         </div>
-         <div class="timeline-item" data-aos="fade-up" data-aos-delay="160">
-           <h3>12/16 – 1/6</h3>
-           <p>Submit your project and a video (up to 2 minutes) showcasing it.</p>
-         </div>
-         <div class="timeline-item" data-aos="fade-up" data-aos-delay="220">
-           <h3>1/8</h3>
-           <p>Top 3–4 in each division invited to present to judges on 1/10.</p>
-         </div>
-         <div class="timeline-item" data-aos="fade-up" data-aos-delay="280">
-           <h3>1/10</h3>
-           <p>Periods 4–6: VHHS presentations during lunch periods.</p>
-         </div>
-         <div class="timeline-item" data-aos="fade-up" data-aos-delay="340">
-           <h3>1/10</h3>
-           <p>End of 6th Period: Award Ceremony at VHHS.</p>
-         </div>
-       </div>
-     </div>
-   </section>
-
-   <!-- Footer
-   ================================================== -->
-   <footer>
-      <div class="row">  
-         <div class="twelve columns content group">
-            <ul class="social-links">
-               <li><a href="https://www.instagram.com/yourinstagramaccount" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a></li>
-            </ul>
-
-            <hr />
-
-            <div class="info">
-               <div class="footer-logo"></div>
-            </div>
-         </div>           
-
-         <ul class="copyright">
-            <li>&copy; Copyright 2024 VHCS.</li> 
-            <li>Design by <a href="http://www.styleshout.com/">Styleshout</a>.</li>
-         </ul>
-
-         <div id="go-top">
-            <a class="smoothscroll" title="Back to Top" href="#hero-d128">Back to Top <i class="fa fa-angle-up"></i></a>
-         </div>
-      </div>
-   </footer>
+   </main>
 
    <div id="preloader"> 
          <div id="loader"></div>
