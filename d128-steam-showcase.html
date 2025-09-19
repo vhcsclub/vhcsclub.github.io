@@ -25,7 +25,7 @@
    <link rel="stylesheet" href="css/base.css">
    <link rel="stylesheet" href="css/vendor.min.css">
    <link rel="stylesheet" href="css/main.css">     
-   
+
    <!-- AOS CSS -->
    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
@@ -55,12 +55,15 @@
         --brand-2:#feb47b;
         --accent:#9b87f5;          /* gentle purple accent */
         --radius:16px;
-        --radius-btn:14px;         /* squarish buttons */
+        --radius-btn:12px;         /* a bit squarer */
         --maxw:1100px;
         --pad-section:90px;
       }
 
-      /* Global font unification (including header/nav) */
+      /* Smooth in-page anchor scrolling */
+      html{ scroll-behavior: smooth; }
+
+      /* Global font (including header/nav) */
       html, body, #main-header, #main-header * {
         font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif !important;
       }
@@ -98,11 +101,13 @@
         margin-top: 12px;
       }
 
-      /* Header shell (keeps your original layout, unified font only) */
+      /* ===== HEADER (transparent overlay over hero) ===== */
       #main-header{
-        background: rgba(255,255,255,0.9);
-        backdrop-filter: saturate(150%) blur(6px);
-        border-bottom: 1px solid #e2e8f0;
+        position: fixed; top: 0; left: 0; right: 0;
+        width: 100%;
+        background: transparent;      /* fully transparent */
+        border-bottom: none;          /* no white line */
+        z-index: 1000;
       }
       #main-header .row{
         max-width: var(--maxw);
@@ -112,17 +117,17 @@
         align-items: center;
         justify-content: space-between;
       }
-      .logo a{ font-weight: 900; letter-spacing: -0.02em; color: var(--text); }
-      #nav li a{ font-weight: 700; }
+      .logo a{ font-weight: 900; letter-spacing: -0.02em; /* no color override so original theme colors apply */ }
+      #nav li a{ font-weight: 700; } /* keep weight, leave colors to your theme */
 
-      /* HERO */
+      /* ===== HERO ===== */
       #hero-d128 {
-          min-height: 86vh;
+          min-height: 100vh; /* fill behind header too */
           display: grid;
           place-items: center;
           text-align: center;
           position: relative;
-          padding: var(--pad-section) 0 84px;
+          padding: calc(var(--pad-section) + 20px) 0 84px;
           color: #fff;
           background: url("images/hero-background.gif") no-repeat center center / cover;
           overflow: hidden;
@@ -158,7 +163,7 @@
           color: #ffffff;
           text-transform: uppercase;
           letter-spacing: 0.02em;
-        }
+      }
       #hero-d128 h1::after{
           content:"";
           display:block;
@@ -197,7 +202,7 @@
           padding: 18px 30px;
           border-radius: var(--radius-btn);
           font-weight: 900;
-          font-size: 1.12rem;
+          font-size: 1.18rem;  /* bigger text */
           letter-spacing: 0.02em;
           transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
           will-change: transform;
@@ -217,7 +222,7 @@
 
       section{ padding: var(--pad-section) 0; }
 
-      /* INTRODUCTION */
+      /* ===== INTRODUCTION ===== */
       #introduction{
         background: var(--surface);
         position: relative;
@@ -285,12 +290,13 @@
           border:0;
       }
 
-      /* Sponsors (ensure ALL text is white) */
+      /* ===== SPONSORS (ensure ALL text is white) ===== */
       #sponsors{
         background: #0b1220;
         color: #fff;
         position: relative;
         overflow: hidden;
+        padding-bottom: 72px; /* slightly reduced to move Past Winners up */
       }
       #sponsors::before{
         content:"";
@@ -301,6 +307,8 @@
         pointer-events: none;
       }
       #sponsors h2, #sponsors .slim-text, #sponsors p { color: #ffffff; }
+      /* Bigger supporting copy for consistency */
+      #sponsors .supporting{ font-size: 1.15rem; opacity:.95; }
 
       .sponsors-wrap{ margin-top: 30px; }
       .sponsors-carousel .carousel-item{ padding: 12px; }
@@ -327,12 +335,13 @@
       }
       .image-box:hover img{ filter: grayscale(0%); }
 
-      /* Past Winners (ensure white text) */
+      /* ===== PAST WINNERS (ensure white text) ===== */
       #previous-winners{
         background: #0b1220;
         color: #fff;
         position: relative;
         overflow: hidden;
+        padding-top: 72px; /* slightly reduced top padding for tighter spacing from Sponsors */
       }
       #previous-winners::before{
         content:"";
@@ -343,9 +352,10 @@
         pointer-events: none;
       }
       #previous-winners h2, #previous-winners p { color: #ffffff; }
+      #previous-winners .supporting{ font-size: 1.15rem; opacity:.95; }
 
-      /* Rubric / Timeline / Prizes */
-      .section-title { /* just to apply underline via ::after */ }
+      /* ===== Rubric / Timeline / Prizes ===== */
+      .section-title { /* underline via ::after */ }
       .slim-text{ color: var(--muted); margin-top: 6px; font-size: 1.05rem; }
 
       .stack{
@@ -360,7 +370,8 @@
         border-radius: var(--radius);
         padding: 22px;
       }
-      .rubric-item p, .timeline-item p{ margin: 8px 0 0 0; }
+      /* Slightly larger description text in these sections */
+      .rubric-item p, .timeline-item p{ margin: 8px 0 0 0; font-size: 1.15rem; line-height: 1.65; }
 
       #prizes .prize-callout{
         display:inline-block;
@@ -392,7 +403,7 @@
 
       @media (max-width: 768px){
         .buttons{ gap:14px; }
-        .btn{ padding: 16px 24px; font-size: 1.06rem; }
+        .btn{ padding: 16px 24px; font-size: 1.08rem; }
       }
    </style>
 
@@ -400,7 +411,7 @@
 
 <body>
 
-   <!-- header (same structure; unified font for consistency)
+   <!-- Transparent overlay header (no white bar at top)
    ================================================== -->
    <header id="main-header">
       <div class="row">
@@ -445,13 +456,16 @@
         </p>
 
         <div class="buttons" data-aos="fade-up" data-aos-delay="160">
-           <a class="btn btn-primary" href="https://docs.google.com/presentation/d/1o-pfEW6mALnnluv6OzXKs_BmJDEMTSlQeL8nLd7VNBc/edit?slide=id.p&pli=1#slide=id.p" target="_blank" rel="noopener">
-             <i class="fa fa-trophy" aria-hidden="true"></i>
+           <!-- CHANGE 1: Smoothly glide down to Past Winners embed -->
+           <a class="btn btn-primary smoothscroll" href="#previous-winners">
+             <i class="fa fa-angle-down" aria-hidden="true"></i>
              Meet the 2025 Winners
            </a>
-           <a class="btn btn-ghost" href="#previous-winners">
-             <i class="fa fa-play-circle" aria-hidden="true"></i>
-             View Winners on this page
+
+           <!-- CHANGE 2: Open slideshow in a new tab with new text -->
+           <a class="btn btn-ghost" href="https://docs.google.com/presentation/d/1o-pfEW6mALnnluv6OzXKs_BmJDEMTSlQeL8nLd7VNBc/edit?slide=id.p&pli=1#slide=id.p" target="_blank" rel="noopener">
+             <i class="fa fa-external-link" aria-hidden="true"></i>
+             View the 2025 award ceremony
            </a>
         </div>
      </section>
@@ -494,7 +508,7 @@
      <section id="sponsors">
        <div class="container">
          <h2 class="section-title white-text" data-aos="fade-right">Our Sponsors</h2>
-         <p class="slim-text" data-aos="fade-right" data-aos-delay="60" style="color:rgba(255,255,255,.9)">Thank you to our partners for supporting student innovation.</p>
+         <p class="supporting" data-aos="fade-right" data-aos-delay="60">Thank you to our partners for supporting student innovation.</p>
 
          <div class="sponsors-wrap">
            <div class="sponsors-carousel">
@@ -536,7 +550,7 @@
      <section id="previous-winners">
        <div class="container">
          <h2 class="section-title white-text" data-aos="fade-right">Past Winners</h2>
-         <p data-aos="fade-right" data-aos-delay="60" style="color:rgba(255,255,255,.9)">Browse highlights from previous showcases.</p>
+         <p class="supporting" data-aos="fade-right" data-aos-delay="60">Browse highlights from previous showcases.</p>
 
          <div class="responsive-iframe" data-aos="fade-up" data-aos-delay="160">
             <iframe 
@@ -600,9 +614,14 @@
        <div class="container" style="text-align:center;">
          <h2 class="section-title" data-aos="fade-right">Prizes</h2>
          <p class="slim-text" data-aos="fade-right" data-aos-delay="60">More details soon — here’s a preview:</p>
-         <p data-aos="fade-up" data-aos-delay="120" style="margin-top: 16px;">
-           Top prize: <span class="prize-callout">$500 scholarship</span><br/>
-           Total prizes: at least <strong>$4,000</strong> in value.
+
+         <!-- Clean, consistent callouts -->
+         <p data-aos="fade-up" data-aos-delay="100" style="margin-top: 18px; font-size:1.15rem; line-height:1.65;">
+           Total prize pool: <strong>$4,000+</strong> in scholarships, tech gear, and gift cards.
+         </p>
+         <p data-aos="fade-up" data-aos-delay="130" style="font-size:1.15rem; line-height:1.65;">
+           Top prize: <span class="prize-callout">$500 scholarship</span> &nbsp;•&nbsp;
+           Multiple runner-up awards and special category recognitions.
          </p>
        </div>
      </section>
