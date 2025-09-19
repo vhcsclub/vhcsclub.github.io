@@ -17,7 +17,7 @@
    ================================================== -->
    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-   <!-- Unified Font (sitewide) -->
+   <!-- Unified Font (sitewide for main content only) -->
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
    <!-- CSS
@@ -64,11 +64,11 @@
       /* Smooth in-page anchor scrolling */
       html{ scroll-behavior: smooth; }
 
-      /* Global reset + font */
-      html, body, #main-header, #main-header * {
-        font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif !important;
+      /* Use Inter only for the main content; leave header to theme defaults */
+      #site-main{ 
+        font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif;
       }
-      body { background: var(--bg); color: var(--text); margin: 0; } /* ensure no top gap */
+      body { background: var(--bg); color: var(--text); margin: 0; }
 
       /* Shared layout */
       .container{
@@ -101,37 +101,9 @@
         margin-top: 12px;
       }
 
-      /* ===== HEADER (transparent overlay over hero, NOT fixed on scroll) ===== */
-      #main-header{
-        position: absolute; /* sits at top, scrolls away */
-        top: 0; left: 0; right: 0;
-        width: 100%;
-        background: transparent;     /* fully transparent */
-        border-bottom: none;         /* no white line */
-        z-index: 1000;
-      }
-      #main-header .row{
-        max-width: var(--maxw);
-        margin: 0 auto;
-        padding: 14px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .logo a{
-        font-weight: 900; 
-        letter-spacing: -0.02em;
-      }
-      /* Make menu text more bold & slightly bigger */
-      #nav li a{
-        font-weight: 900;
-        font-size: 1.02rem;
-        letter-spacing: .01em;
-      }
-
       /* ===== HERO ===== */
       #hero-d128 {
-          min-height: 100vh; /* fill behind header too */
+          min-height: 100vh;
           display: grid;
           place-items: center;
           text-align: center;
@@ -183,21 +155,21 @@
           background: linear-gradient(90deg, var(--accent), var(--brand));
       }
 
-      /* Subhead: now same typographic feel as section-title (heavier & slightly larger) */
+      /* Subhead */
       #hero-d128 .subhead{
           max-width: 980px;
           margin: 16px auto 34px;
           padding: 0 8px;
-          font-size: clamp(24px, 3vw, 28px); /* larger */
-          font-weight: 900;                   /* heavier, like h2 */
+          font-size: clamp(24px, 3vw, 28px);
+          font-weight: 900;
           color: #ffffff;
           opacity: 0.98;
           line-height: 1.5;
           text-wrap: balance;
-          letter-spacing: -0.01em;            /* match h2 tracking */
+          letter-spacing: -0.01em;
       }
 
-      /* Buttons: same font weight/feel as section-title (heavier & tighter tracking) */
+      /* Buttons */
       .buttons {
           display: flex;
           gap: 18px;
@@ -210,9 +182,9 @@
           gap: 10px;
           padding: 18px 30px;
           border-radius: var(--radius-btn);
-          font-weight: 900;          /* heavy to match h2 */
-          font-size: 1.2rem;         /* slightly larger text */
-          letter-spacing: -0.01em;   /* tighter like h2 */
+          font-weight: 900;
+          font-size: 1.2rem;
+          letter-spacing: -0.01em;
           transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
           will-change: transform;
           outline: none;
@@ -266,9 +238,8 @@
         margin-bottom: 10px;
       }
 
-      /* Lead body now matched to 'supporting' text scale */
       .lead{
-        font-size: 1.35rem;       /* match sponsors/past winners supporting */
+        font-size: 1.35rem;
         color: var(--muted);
         margin-top: 10px;
         line-height: 1.65;
@@ -300,13 +271,13 @@
           border:0;
       }
 
-      /* ===== SPONSORS (ensure ALL text is white) ===== */
+      /* ===== SPONSORS ===== */
       #sponsors{
         background: var(--dark);
         color: #fff;
         position: relative;
         overflow: hidden;
-        padding-bottom: 64px; /* slightly reduced to move Past Winners up */
+        padding-bottom: 64px;
       }
       #sponsors::before{
         content:"";
@@ -317,8 +288,7 @@
         pointer-events: none;
       }
       #sponsors h2, #sponsors .slim-text, #sponsors p { color: #ffffff; }
-      /* Bigger supporting copy for consistency */
-      #sponsors .supporting{ font-size: 1.35rem; opacity:.98; } /* larger per request */
+      #sponsors .supporting{ font-size: 1.35rem; opacity:.98; }
 
       .sponsors-wrap{ margin-top: 30px; }
       .sponsors-carousel .carousel-item{ padding: 12px; }
@@ -345,13 +315,13 @@
       }
       .image-box:hover img{ filter: grayscale(0%); }
 
-      /* ===== PAST WINNERS (ensure white text) ===== */
+      /* ===== PAST WINNERS ===== */
       #previous-winners{
         background: var(--dark);
         color: #fff;
         position: relative;
         overflow: hidden;
-        padding-top: 64px; /* slightly reduced top padding for tighter spacing from Sponsors */
+        padding-top: 64px;
       }
       #previous-winners::before{
         content:"";
@@ -362,11 +332,11 @@
         pointer-events: none;
       }
       #previous-winners h2, #previous-winners p { color: #ffffff; }
-      #previous-winners .supporting{ font-size: 1.35rem; opacity:.98; } /* larger per request */
+      #previous-winners .supporting{ font-size: 1.35rem; opacity:.98; }
 
       /* ===== Rubric / Timeline ===== */
       .section-title { /* underline via ::after */ }
-      .slim-text{ color: var(--muted); margin-top: 6px; font-size: 1.25rem; } /* larger per request */
+      .slim-text{ color: var(--muted); margin-top: 6px; font-size: 1.25rem; }
 
       .stack{
         display: grid;
@@ -380,19 +350,18 @@
         border-radius: var(--radius);
         padding: 22px;
       }
-      /* Slightly larger description text in these sections */
       .rubric-item p, .timeline-item p{ margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.68; }
 
       /* ===== Footer ===== */
       footer{
-        background: var(--dark); /* match Sponsors dark background */
+        background: var(--dark);
         color: #ffffff;
         border-top: none;
       }
       footer .row{
         max-width: var(--maxw);
         margin: 0 auto;
-        padding: 18px 24px;  /* decreased spacing */
+        padding: 18px 24px;
       }
       footer a{ color: #ffffff; text-decoration: none; }
       footer a:hover{ text-decoration: underline; }
@@ -412,34 +381,41 @@
 
 <body>
 
-   <!-- Transparent overlay header (no white bar at top, not sticky)
+   <!-- header (exactly matching site header styles; no custom overrides)
    ================================================== -->
    <header id="main-header">
-      <div class="row">
-         <div class="logo">
-            <a href="index.html">VHCS</a>
-         </div>
 
-         <nav id="nav-wrap">         
-            <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
-            	<span class="menu-icon">Menu</span>
-            </a>
-        	  <a class="mobile-btn" href="#" title="Hide navigation">
-        		  <span class="menu-icon">Menu</span>
-        	  </a>            
+    <div class="row">
 
-            <ul id="nav" class="nav">
+      <div class="logo">
+        <a href="index.html">VHCS</a>
+      </div>
+
+      <nav id="nav-wrap">         
+        
+        <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
+          <span class="menu-icon">Menu</span>
+        </a>
+        <a class="mobile-btn" href="#" title="Hide navigation">
+          <span class="menu-icon">Menu</span>
+        </a>            
+
+        <ul id="nav" class="nav">
   <li><a href="index.html">Home</a></li>
   <li><a href="girls-who-code.html">Girls Who Code</a></li>
   <li><a href="d128-steam-showcase.html">D128 STEAM Showcase</a></li>
   <li><a href="contact-us.html">Contact Us</a></li>
 </ul>
 
-         <ul class="header-social">
-            <li><a href="https://www.instagram.com/yourinstagramaccount" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a></li>
-         </ul>      
-      </div>
-   </header>
+      </nav> <!-- end #nav-wrap -->
+
+      <ul class="header-social">
+  <li><a href="https://www.instagram.com/vhcsclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a></li>
+</ul>      
+
+    </div>
+
+   </header> <!-- end header -->
 
    <main id="site-main">
 
@@ -462,7 +438,7 @@
              Meet the 2025 Winners
            </a>
 
-           <!-- Open slideshow in a new tab with new text -->
+           <!-- Open slideshow in a new tab -->
            <a class="btn btn-ghost" href="https://docs.google.com/presentation/d/1o-pfEW6mALnnluv6OzXKs_BmJDEMTSlQeL8nLd7VNBc/edit?slide=id.p&pli=1#slide=id.p" target="_blank" rel="noopener">
              <i class="fa fa-external-link" aria-hidden="true"></i>
              View the 2025 award ceremony
@@ -609,155 +585,155 @@
      </section>
 
      <!-- PRIZES
-================================================== -->
-<section id="prizes">
-  <style>
-    /* Scoped styling just for the Prizes section */
-    #prizes { background: var(--surface); }
-    #prizes .container { text-align: left; }
-    #prizes .supporting{
-      font-size: 1.3rem; /* larger per request */
-      color: var(--muted);
-      margin-top: 8px;
-      line-height: 1.65;
-    }
-    #prizes .prizes-grid{
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 28px;
-      align-items: stretch;
-      margin-top: 26px;
-    }
-    @media (max-width: 940px){
-      #prizes .prizes-grid{ grid-template-columns: 1fr; }
-    }
-    .prize-hero{
-      background: radial-gradient(120% 120% at 80% 0%, rgba(155,135,245,0.25), transparent 60%),
-                  linear-gradient(135deg, var(--brand), var(--brand-2));
-      color: #fff;
-      border: none;
-      border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: 0 12px 30px rgba(2,6,23,0.12);
-    }
-    .prize-hero .label{
-      display:inline-block;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: .9rem;
-      opacity: .95;
-    }
-    .prize-hero .amount{
-      font-size: clamp(36px, 6vw, 56px);
-      font-weight: 900;
-      line-height: 1.1;
-      margin: 8px 0 6px 0;
-    }
-    .prize-hero .desc{
-      font-size: 1.08rem;
-      opacity: .95;
-    }
-    .cards{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-    .prize-card{
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: var(--radius);
-      padding: 18px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 14px;
-      align-items: start;
-      box-shadow: 0 6px 20px rgba(2,6,23,0.06);
-    }
-    .prize-card .icon{
-      width: 46px; height: 46px;
-      border-radius: 12px;
-      display: grid; place-items: center;
-      background: linear-gradient(135deg, var(--accent), var(--brand));
-      color: #fff;
-      box-shadow: 0 6px 16px rgba(2,6,23,0.12);
-    }
-    .prize-card h4{
-      margin: 0 0 4px 0;
-      font-size: 1.12rem;
-      font-weight: 900;
-      color: var(--text);
-    }
-    .prize-card p{
-      margin: 0;
-      font-size: 1.12rem; /* slightly larger descriptions */
-      color: var(--muted);
-      line-height: 1.65;
-    }
-    .prize-callout{
-      display:inline-block;
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 10px 14px;
-      box-shadow: 0 8px 20px rgba(15,23,42,0.05);
-      font-weight: 900;
-      color: var(--text);
-      font-size: 1rem;
-    }
-  </style>
+     ================================================== -->
+     <section id="prizes">
+      <style>
+        /* Scoped styling just for the Prizes section */
+        #prizes { background: var(--surface); }
+        #prizes .container { text-align: left; }
+        #prizes .supporting{
+          font-size: 1.3rem;
+          color: var(--muted);
+          margin-top: 8px;
+          line-height: 1.65;
+        }
+        #prizes .prizes-grid{
+          display: grid;
+          grid-template-columns: 1.1fr 1fr;
+          gap: 28px;
+          align-items: stretch;
+          margin-top: 26px;
+        }
+        @media (max-width: 940px){
+          #prizes .prizes-grid{ grid-template-columns: 1fr; }
+        }
+        .prize-hero{
+          background: radial-gradient(120% 120% at 80% 0%, rgba(155,135,245,0.25), transparent 60%),
+                      linear-gradient(135deg, var(--brand), var(--brand-2));
+          color: #fff;
+          border: none;
+          border-radius: var(--radius);
+          padding: 26px;
+          box-shadow: 0 12px 30px rgba(2,6,23,0.12);
+        }
+        .prize-hero .label{
+          display:inline-block;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: .08em;
+          font-size: .9rem;
+          opacity: .95;
+        }
+        .prize-hero .amount{
+          font-size: clamp(36px, 6vw, 56px);
+          font-weight: 900;
+          line-height: 1.1;
+          margin: 8px 0 6px 0;
+        }
+        .prize-hero .desc{
+          font-size: 1.08rem;
+          opacity: .95;
+        }
+        .cards{
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .prize-card{
+          background: #fff;
+          border: 1px solid #e2e8f0;
+          border-radius: var(--radius);
+          padding: 18px;
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 14px;
+          align-items: start;
+          box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+        }
+        .prize-card .icon{
+          width: 46px; height: 46px;
+          border-radius: 12px;
+          display: grid; place-items: center;
+          background: linear-gradient(135deg, var(--accent), var(--brand));
+          color: #fff;
+          box-shadow: 0 6px 16px rgba(2,6,23,0.12);
+        }
+        .prize-card h4{
+          margin: 0 0 4px 0;
+          font-size: 1.12rem;
+          font-weight: 900;
+          color: var(--text);
+        }
+        .prize-card p{
+          margin: 0;
+          font-size: 1.12rem;
+          color: var(--muted);
+          line-height: 1.65;
+        }
+        .prize-callout{
+          display:inline-block;
+          background: #fff;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+          padding: 10px 14px;
+          box-shadow: 0 8px 20px rgba(15,23,42,0.05);
+          font-weight: 900;
+          color: var(--text);
+          font-size: 1rem;
+        }
+      </style>
 
-  <div class="container">
-    <h2 class="section-title" data-aos="fade-right">Prizes</h2>
-    <p class="supporting" data-aos="fade-right" data-aos-delay="60">
-      More details soon — here’s a preview of what you can win.
-    </p>
-
-    <div class="prizes-grid">
-      <!-- Left: gradient hero pool -->
-      <div class="prize-hero" data-aos="fade-up" data-aos-delay="80">
-        <span class="label">Total Prize Pool</span>
-        <div class="amount">$4,000+ in awards</div>
-        <p class="desc">
-          Scholarships, tech gear, gift cards, and special recognition for standout projects.
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-right">Prizes</h2>
+        <p class="supporting" data-aos="fade-right" data-aos-delay="60">
+          More details soon — here’s a preview of what you can win.
         </p>
+
+        <div class="prizes-grid">
+          <!-- Left: gradient hero pool -->
+          <div class="prize-hero" data-aos="fade-up" data-aos-delay="80">
+            <span class="label">Total Prize Pool</span>
+            <div class="amount">$4,000+ in awards</div>
+            <p class="desc">
+              Scholarships, tech gear, gift cards, and special recognition for standout projects.
+            </p>
+          </div>
+
+          <!-- Right: concise prize cards -->
+          <div class="cards">
+            <div class="prize-card" data-aos="fade-up" data-aos-delay="120">
+              <div class="icon"><i class="fa fa-trophy" aria-hidden="true"></i></div>
+              <div>
+                <h4>Top Prize</h4>
+                <p>
+                  <span class="prize-callout">$500 scholarship</span> awarded to the highest-rated project overall.
+                </p>
+              </div>
+            </div>
+
+            <div class="prize-card" data-aos="fade-up" data-aos-delay="160">
+              <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+              <div>
+                <h4>Division Winners</h4>
+                <p>
+                  Multiple runner-up awards for each STEAM division recognizing excellence and craft.
+                </p>
+              </div>
+            </div>
+
+            <div class="prize-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="fa fa-certificate" aria-hidden="true"></i></div>
+              <div>
+                <h4>Special Recognitions</h4>
+                <p>
+                  Extra accolades for innovation, community impact, and presentation quality.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Right: concise prize cards -->
-      <div class="cards">
-        <div class="prize-card" data-aos="fade-up" data-aos-delay="120">
-          <div class="icon"><i class="fa fa-trophy" aria-hidden="true"></i></div>
-          <div>
-            <h4>Top Prize</h4>
-            <p>
-              <span class="prize-callout">$500 scholarship</span> awarded to the highest-rated project overall.
-            </p>
-          </div>
-        </div>
-
-        <div class="prize-card" data-aos="fade-up" data-aos-delay="160">
-          <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>
-          <div>
-            <h4>Division Winners</h4>
-            <p>
-              Multiple runner-up awards for each STEAM division recognizing excellence and craft.
-            </p>
-          </div>
-        </div>
-
-        <div class="prize-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="icon"><i class="fa fa-certificate" aria-hidden="true"></i></div>
-          <div>
-            <h4>Special Recognitions</h4>
-            <p>
-              Extra accolades for innovation, community impact, and presentation quality.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+     </section>
 
      <!-- TIMELINE
      ================================================== -->
