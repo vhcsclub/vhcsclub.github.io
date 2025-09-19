@@ -46,8 +46,8 @@
     #nav li a{ font-weight:900; font-size:1.02rem; letter-spacing:.01em; }
 
     /* ===== HERO =====
-       We keep your original background from theme/main.css (no override here).
-       We switch layout to a left-aligned inner container. */
+       Uses your theme’s original background (from main.css).
+       Left-aligned inner container + overlay for readability. */
     #hero{
       position:relative; min-height:100vh; display:block; color:#fff;
       padding: calc(var(--pad-section) + 20px) 0 120px; /* extra bottom space so CTA never overlaps */
@@ -68,12 +68,12 @@
       text-transform:uppercase; letter-spacing:.02em; text-shadow:0 8px 30px rgba(0,0,0,0.35);
       margin:0 0 12px 0;
     }
-    /* decorative underline (keep default for slides 2/3)... */
+    /* decorative underline (keep for slides 2/3) */
     #hero-slider .flex-caption h1::after{
       content:""; display:block; width:96px; height:6px; border-radius:999px;
       margin:14px 0 10px 0; background:linear-gradient(90deg, var(--accent), var(--brand));
     }
-    /* ...but REMOVE underline only on slide #1 */
+    /* REMOVE underline only on slide #1 */
     #hero-slider .slides li:first-child .flex-caption h1::after{ display:none; }
 
     #hero-slider .flex-caption h3{
@@ -81,25 +81,30 @@
       line-height:1.55; text-shadow:0 6px 20px rgba(0,0,0,0.3); max-width:980px; margin:0;
     }
 
-    /* CTA: left-aligned and nudged up */
+    /* ===== CTA Button (perfect centering + polish) ===== */
     #more{ margin-top:18px; }
     #more .cta{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:14px 22px; border-radius:var(--radius-btn);
-      background:var(--brand); color:#fff; font-weight:900; letter-spacing:-0.01em;
-      box-shadow:0 10px 24px rgba(2,6,23,0.12);
-      transition:transform .18s ease, background .18s ease;
+      display:inline-flex; align-items:center; justify-content:center; /* center text perfectly */
+      gap:8px; line-height:1;              /* prevent odd vertical centering */
+      padding:14px 24px; border-radius:var(--radius-btn);
+      background:linear-gradient(135deg, var(--brand), var(--brand-2));
+      color:#fff; font-weight:900; letter-spacing:-0.01em; font-size:1.08rem;
+      box-shadow:0 10px 24px rgba(2,6,23,0.18);
+      text-decoration:none;
+      transition:transform .18s ease, background .18s ease, box-shadow .18s ease;
     }
-    #more .cta:hover{ transform:translateY(-2px) scale(1.02); background:var(--brand-2); }
+    #more .cta i{ font-size:1.1em; }
+    #more .cta:hover{ transform:translateY(-2px); background:linear-gradient(135deg, var(--brand-2), var(--brand)); box-shadow:0 14px 30px rgba(2,6,23,0.24); }
+    #more .cta:focus-visible{ outline:2px solid rgba(255,255,255,.65); outline-offset:3px; border-radius:12px; }
 
-    /* Sections below */
+    /* ===== Sections ===== */
     section{ padding:var(--pad-section) 0; }
     .container{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
     h2.section-title{ font-size:clamp(32px,4.2vw,46px); font-weight:900; }
     h2.section-title::after{ content:""; display:block; width:72px; height:5px; border-radius:999px; background:linear-gradient(90deg, var(--accent), var(--brand)); margin-top:12px; }
     .lead{ font-size:1.35rem; color:var(--muted); margin-top:10px; line-height:1.65; text-wrap:balance; }
 
-    /* Programs cards */
+    /* Programs grid */
     #programs .cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px; }
     @media (max-width:960px){ #programs .cards{ grid-template-columns:1fr 1fr; } }
     @media (max-width:640px){ #programs .cards{ grid-template-columns:1fr; } }
@@ -111,15 +116,60 @@
     .program h4{ margin:0 0 6px; font-size:1.12rem; font-weight:900; color:var(--text); }
     .program p{ margin:0; line-height:1.6; }
 
-    /* Dark band */
-    .darkband{ background:var(--dark); color:#fff; text-align:center; }
+    /* ===== Ready to Join (enhanced) ===== */
+    .darkband{
+      position:relative;
+      background: radial-gradient(120% 120% at 90% 10%, rgba(155,135,245,0.22), transparent 60%), var(--dark);
+      color:#fff;
+      overflow:hidden;
+    }
+    .darkband::before{
+      content:"";
+      position:absolute; inset:-20%;
+      background:
+        radial-gradient(520px 280px at 15% 85%, rgba(155,135,245,0.14), transparent 60%),
+        radial-gradient(640px 320px at 85% 15%, rgba(255,126,95,0.16), transparent 65%);
+      pointer-events:none;
+      filter: blur(2px);
+    }
+    .darkband .container{ position:relative; z-index:1; }
     .darkband h2, .darkband p{ color:#fff; }
-    .btn{ display:inline-flex; align-items:center; gap:10px; padding:18px 30px; border-radius:var(--radius-btn);
-          font-weight:900; font-size:1.2rem; letter-spacing:-0.01em; box-shadow:0 10px 24px rgba(2,6,23,0.12);
-          transition:transform .18s, box-shadow .18s, background .18s, color .18s; }
-    .btn-primary{ background:var(--brand); color:#fff; } .btn-primary:hover{ transform:translateY(-2px) scale(1.02); background:var(--brand-2); }
-    .btn-ghost{ background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.3); } .btn-ghost:hover{ transform:translateY(-2px) scale(1.02); background:rgba(255,255,255,.22); }
-    .buttons{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+    .join-grid{
+      display:grid; grid-template-columns: 1.1fr 0.9fr; gap:28px; align-items:stretch; margin-top:26px;
+    }
+    @media (max-width: 920px){
+      .join-grid{ grid-template-columns:1fr; }
+    }
+    .join-card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:0 12px 30px rgba(2,6,23,0.25);
+      backdrop-filter: blur(4px);
+    }
+    .join-list{
+      display:grid; gap:12px; margin-top:6px; font-size:1.08rem;
+    }
+    .join-item{
+      display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start;
+    }
+    .join-item .badge{
+      width:40px; height:40px; border-radius:12px; display:grid; place-items:center;
+      background:linear-gradient(135deg, var(--accent), var(--brand));
+      box-shadow:0 6px 16px rgba(2,6,23,0.22);
+    }
+    .join-item strong{ display:block; font-weight:900; margin-bottom:2px; }
+    .join-item span{ opacity:.95; }
+
+    .buttons{ display:flex; gap:18px; flex-wrap:wrap; }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:18px 30px; border-radius:var(--radius-btn);
+          font-weight:900; font-size:1.14rem; letter-spacing:-0.01em; box-shadow:0 10px 24px rgba(2,6,23,0.12);
+          transition:transform .18s, box-shadow .18s, background .18s, color .18s; text-decoration:none; }
+    .btn-primary{ background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#fff; }
+    .btn-primary:hover{ transform:translateY(-2px); background:linear-gradient(135deg, var(--brand-2), var(--brand)); box-shadow:0 14px 30px rgba(2,6,23,0.24); }
+    .btn-ghost{ background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.3); }
+    .btn-ghost:hover{ transform:translateY(-2px); background:rgba(255,255,255,.22); }
 
     /* Footer */
     footer{ background:var(--dark); color:#fff; border-top:none; }
@@ -129,7 +179,7 @@
     @media (max-width:768px){
       #hero-slider .flex-caption h1{ font-size:clamp(38px,7vw,58px); }
       #hero-slider .flex-caption h3{ font-size:clamp(18px,2.8vw,22px); }
-      .buttons{ gap:14px; } .btn{ padding:16px 24px; font-size:1.12rem; }
+      .buttons{ gap:14px; } .btn{ padding:16px 24px; font-size:1.06rem; }
     }
   </style>
 </head>
@@ -190,7 +240,7 @@
           </div>
         </div>
 
-        <!-- Left-aligned CTA, nudged up so it never gets covered -->
+        <!-- Left-aligned CTA -->
         <div id="more">
           <a class="cta smoothscroll" href="#about"><i class="fa fa-angle-down"></i> Learn more</a>
         </div>
@@ -268,16 +318,52 @@
       </div>
     </section>
 
-    <!-- DARK CALL TO ACTION -->
+    <!-- READY TO JOIN (Enhanced) -->
     <section class="darkband">
       <div class="container">
         <h2 class="section-title white-text" data-aos="fade-right">Ready to join?</h2>
         <p class="lead" style="color:#ffffff; opacity:.98;" data-aos="fade-right" data-aos-delay="60">
           Come to our next meeting or reach out — beginners welcome.
         </p>
-        <div class="buttons" data-aos="fade-up" data-aos-delay="120">
-          <a class="btn btn-primary" href="contact-us.html"><i class="fa fa-envelope-o"></i> Contact Us</a>
-          <a class="btn btn-ghost" href="d128-steam-showcase.html"><i class="fa fa-star-o"></i> Explore STEAM Showcase</a>
+
+        <div class="join-grid">
+          <!-- Info / bullets -->
+          <div class="join-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="join-list">
+              <div class="join-item">
+                <div class="badge"><i class="fa fa-calendar-o" aria-hidden="true"></i></div>
+                <div>
+                  <strong>Fridays after school</strong>
+                  <span>Quick intros, hands-on mini-lessons, and project time.</span>
+                </div>
+              </div>
+              <div class="join-item">
+                <div class="badge"><i class="fa fa-code" aria-hidden="true"></i></div>
+                <div>
+                  <strong>All experience levels</strong>
+                  <span>From first “Hello, World!” to shipping real apps.</span>
+                </div>
+              </div>
+              <div class="join-item">
+                <div class="badge"><i class="fa fa-users" aria-hidden="true"></i></div>
+                <div>
+                  <strong>Find your crew</strong>
+                  <span>Join Girls Who Code, XP Coding, or a project squad.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA block -->
+          <div class="join-card" data-aos="fade-up" data-aos-delay="140">
+            <p class="lead" style="color:#fff; opacity:.95; margin-top:0;">
+              Say hi, ask questions, or dive right in — we’ll help you get started.
+            </p>
+            <div class="buttons" style="margin-top:10px;">
+              <a class="btn btn-primary" href="contact-us.html"><i class="fa fa-envelope-o"></i> Contact Us</a>
+              <a class="btn btn-ghost" href="d128-steam-showcase.html"><i class="fa fa-star-o"></i> Explore STEAM Showcase</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
