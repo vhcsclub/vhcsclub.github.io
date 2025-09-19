@@ -618,22 +618,163 @@
      </section>
 
      <!-- PRIZES
-     ================================================== -->
-     <section id="prizes">
-       <div class="container" style="text-align:center;">
-         <h2 class="section-title" data-aos="fade-right">Prizes</h2>
-         <p class="slim-text" data-aos="fade-right" data-aos-delay="60">More details soon — here’s a preview:</p>
+================================================== -->
+<section id="prizes">
+  <style>
+    /* Scoped styling just for the Prizes section */
+    #prizes { background: var(--surface); }
+    #prizes .container { /* left-aligned, not centered */
+      text-align: left;
+    }
+    #prizes .supporting{
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.65;
+    }
+    #prizes .prizes-grid{
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 26px;
+    }
+    @media (max-width: 940px){
+      #prizes .prizes-grid{ grid-template-columns: 1fr; }
+    }
 
-         <!-- Clean, consistent callouts -->
-         <p data-aos="fade-up" data-aos-delay="100" style="margin-top: 18px; font-size:1.2rem; line-height:1.7;">
-           Total prize pool: <strong>$4,000+</strong> in scholarships, tech gear, and gift cards.
-         </p>
-         <p data-aos="fade-up" data-aos-delay="130" style="font-size:1.2rem; line-height:1.7;">
-           Top prize: <span class="prize-callout">$500 scholarship</span> &nbsp;•&nbsp;
-           Multiple runner-up awards and special category recognitions.
-         </p>
-       </div>
-     </section>
+    /* Hero callout */
+    #prizes .prize-hero{
+      background: radial-gradient(120% 120% at 80% 0%, rgba(155,135,245,0.25), transparent 60%),
+                  linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 12px 30px rgba(2,6,23,0.12);
+    }
+    #prizes .prize-hero .label{
+      display:inline-block;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .9rem;
+      opacity: .95;
+    }
+    #prizes .prize-hero .amount{
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 8px 0 6px 0;
+    }
+    #prizes .prize-hero .desc{
+      font-size: 1.05rem;
+      opacity: .95;
+    }
+
+    /* Cards on the right */
+    #prizes .cards{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    #prizes .prize-card{
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 18px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+    }
+    #prizes .prize-card .icon{
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--brand));
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(2,6,23,0.12);
+    }
+    #prizes .prize-card h4{
+      margin: 0 0 4px 0;
+      font-size: 1.12rem;
+      font-weight: 900;
+      color: var(--text);
+    }
+    #prizes .prize-card p{
+      margin: 0;
+      font-size: 1.08rem; /* slightly larger descriptions per your request */
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* Keep the existing prize-callout style consistent */
+    #prizes .prize-callout{
+      display:inline-block;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.05);
+      font-weight: 900;
+      color: var(--text);
+      font-size: 1rem;
+    }
+  </style>
+
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-right">Prizes</h2>
+    <p class="supporting" data-aos="fade-right" data-aos-delay="60">
+      More details soon — here’s a preview of what you can win.
+    </p>
+
+    <div class="prizes-grid">
+      <!-- Left: gradient hero pool -->
+      <div class="prize-hero" data-aos="fade-up" data-aos-delay="80">
+        <span class="label">Total Prize Pool</span>
+        <div class="amount">$4,000+ in awards</div>
+        <p class="desc">
+          Scholarships, tech gear, gift cards, and special recognition for standout projects.
+        </p>
+      </div>
+
+      <!-- Right: concise prize cards -->
+      <div class="cards">
+        <div class="prize-card" data-aos="fade-up" data-aos-delay="120">
+          <div class="icon"><i class="fa fa-trophy" aria-hidden="true"></i></div>
+          <div>
+            <h4>Top Prize</h4>
+            <p>
+              <span class="prize-callout">$500 scholarship</span> awarded to the highest-rated project overall.
+            </p>
+          </div>
+        </div>
+
+        <div class="prize-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+          <div>
+            <h4>Division Winners</h4>
+            <p>
+              Multiple runner-up awards for each STEAM division recognizing excellence and craft.
+            </p>
+          </div>
+        </div>
+
+        <div class="prize-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon"><i class="fa fa-certificate" aria-hidden="true"></i></div>
+          <div>
+            <h4>Special Recognitions</h4>
+            <p>
+              Extra accolades for innovation, community impact, and presentation quality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
      <!-- TIMELINE
      ================================================== -->
