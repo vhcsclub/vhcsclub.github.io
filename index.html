@@ -39,65 +39,52 @@
     body{ background:var(--bg); color:var(--text); margin:0; }
     #site-main{ font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif; }
 
-    /* ===== Header (matches Showcase) ===== */
+    /* ===== Header — exactly like D128 page ===== */
     #main-header{ position:absolute; top:0; left:0; right:0; width:100%; background:transparent; border-bottom:none; z-index:1000; }
     #main-header .row{ max-width:var(--maxw); margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; }
     .logo a{ font-weight:900; letter-spacing:-0.02em; }
     #nav li a{ font-weight:900; font-size:1.02rem; letter-spacing:.01em; }
 
-    /* ===== HERO =====
-       Uses your theme’s original background (from main.css).
-       Left-aligned inner container + overlay for readability. */
+    /* ===== HERO — centered content, keeps your theme background ===== */
     #hero{
-      position:relative; min-height:100vh; display:block; color:#fff;
-      padding: calc(var(--pad-section) + 20px) 0 120px; /* extra bottom space so CTA never overlaps */
-      overflow:hidden; text-align:left; /* LEFT align */
+      position:relative;
+      min-height:100vh; /* full height */
+      display:grid;       /* center vertically & horizontally */
+      place-items:center; /* magic centering */
+      padding: calc(var(--pad-section) + 10px) 0 90px; /* leave breathing room */
+      color:#fff;
+      text-align:center;  /* center text */
+      overflow:hidden;
     }
+    /* dark overlay for readability on top of your GIF/image in theme */
     #hero::before{
       content:""; position:absolute; inset:0;
       background:linear-gradient(180deg, rgba(0,0,0,0.46), rgba(0,0,0,0.64));
       z-index:0;
     }
     #hero > *{ position:relative; z-index:1; }
-    .hero-inner{ max-width:var(--maxw); margin:0 auto; padding:0 24px; } /* left-aligned container */
+    .hero-inner{ max-width:var(--maxw); width:100%; padding:0 24px; }
 
-    /* Flexslider captions, LEFT aligned */
-    #hero-slider .slides, #hero-slider .flex-caption{ text-align:left; }
+    /* Flexslider centered captions */
+    #hero-slider .slides, #hero-slider .flex-caption{ text-align:center; }
     #hero-slider .flex-caption h1{
       font-size:clamp(44px,7.2vw,82px); font-weight:900; color:#fff;
       text-transform:uppercase; letter-spacing:.02em; text-shadow:0 8px 30px rgba(0,0,0,0.35);
       margin:0 0 12px 0;
     }
-    /* decorative underline (keep for slides 2/3) */
+    /* underline for slides 2/3 only (no underline on slide 1) */
     #hero-slider .flex-caption h1::after{
       content:""; display:block; width:96px; height:6px; border-radius:999px;
-      margin:14px 0 10px 0; background:linear-gradient(90deg, var(--accent), var(--brand));
+      margin:14px auto 10px; background:linear-gradient(90deg, var(--accent), var(--brand));
     }
-    /* REMOVE underline only on slide #1 */
     #hero-slider .slides li:first-child .flex-caption h1::after{ display:none; }
 
     #hero-slider .flex-caption h3{
       font-size:clamp(20px,2.6vw,26px); font-weight:700; color:#ffffff; opacity:.98;
-      line-height:1.55; text-shadow:0 6px 20px rgba(0,0,0,0.3); max-width:980px; margin:0;
+      line-height:1.55; text-shadow:0 6px 20px rgba(0,0,0,0.3); max-width:980px; margin:0 auto;
     }
 
-    /* ===== CTA Button (perfect centering + polish) ===== */
-    #more{ margin-top:18px; }
-    #more .cta{
-      display:inline-flex; align-items:center; justify-content:center; /* center text perfectly */
-      gap:8px; line-height:1;              /* prevent odd vertical centering */
-      padding:14px 24px; border-radius:var(--radius-btn);
-      background:linear-gradient(135deg, var(--brand), var(--brand-2));
-      color:#fff; font-weight:900; letter-spacing:-0.01em; font-size:1.08rem;
-      box-shadow:0 10px 24px rgba(2,6,23,0.18);
-      text-decoration:none;
-      transition:transform .18s ease, background .18s ease, box-shadow .18s ease;
-    }
-    #more .cta i{ font-size:1.1em; }
-    #more .cta:hover{ transform:translateY(-2px); background:linear-gradient(135deg, var(--brand-2), var(--brand)); box-shadow:0 14px 30px rgba(2,6,23,0.24); }
-    #more .cta:focus-visible{ outline:2px solid rgba(255,255,255,.65); outline-offset:3px; border-radius:12px; }
-
-    /* ===== Sections ===== */
+    /* Sections */
     section{ padding:var(--pad-section) 0; }
     .container{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
     h2.section-title{ font-size:clamp(32px,4.2vw,46px); font-weight:900; }
@@ -116,49 +103,23 @@
     .program h4{ margin:0 0 6px; font-size:1.12rem; font-weight:900; color:var(--text); }
     .program p{ margin:0; line-height:1.6; }
 
-    /* ===== Ready to Join (enhanced) ===== */
-    .darkband{
-      position:relative;
-      background: radial-gradient(120% 120% at 90% 10%, rgba(155,135,245,0.22), transparent 60%), var(--dark);
-      color:#fff;
-      overflow:hidden;
-    }
+    /* Dark band (Ready to join) */
+    .darkband{ position:relative; background: radial-gradient(120% 120% at 90% 10%, rgba(155,135,245,0.22), transparent 60%), var(--dark); color:#fff; overflow:hidden; }
     .darkband::before{
-      content:"";
-      position:absolute; inset:-20%;
+      content:""; position:absolute; inset:-20%;
       background:
         radial-gradient(520px 280px at 15% 85%, rgba(155,135,245,0.14), transparent 60%),
         radial-gradient(640px 320px at 85% 15%, rgba(255,126,95,0.16), transparent 65%);
-      pointer-events:none;
-      filter: blur(2px);
+      pointer-events:none; filter: blur(2px);
     }
     .darkband .container{ position:relative; z-index:1; }
     .darkband h2, .darkband p{ color:#fff; }
-    .join-grid{
-      display:grid; grid-template-columns: 1.1fr 0.9fr; gap:28px; align-items:stretch; margin-top:26px;
-    }
-    @media (max-width: 920px){
-      .join-grid{ grid-template-columns:1fr; }
-    }
-    .join-card{
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.15);
-      border-radius:var(--radius);
-      padding:22px;
-      box-shadow:0 12px 30px rgba(2,6,23,0.25);
-      backdrop-filter: blur(4px);
-    }
-    .join-list{
-      display:grid; gap:12px; margin-top:6px; font-size:1.08rem;
-    }
-    .join-item{
-      display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start;
-    }
-    .join-item .badge{
-      width:40px; height:40px; border-radius:12px; display:grid; place-items:center;
-      background:linear-gradient(135deg, var(--accent), var(--brand));
-      box-shadow:0 6px 16px rgba(2,6,23,0.22);
-    }
+    .join-grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:28px; align-items:stretch; margin-top:26px; }
+    @media (max-width: 920px){ .join-grid{ grid-template-columns:1fr; } }
+    .join-card{ background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:var(--radius); padding:22px; box-shadow:0 12px 30px rgba(2,6,23,0.25); backdrop-filter: blur(4px); }
+    .join-list{ display:grid; gap:12px; margin-top:6px; font-size:1.08rem; }
+    .join-item{ display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start; }
+    .join-item .badge{ width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg, var(--accent), var(--brand)); box-shadow:0 6px 16px rgba(2,6,23,0.22); }
     .join-item strong{ display:block; font-weight:900; margin-bottom:2px; }
     .join-item span{ opacity:.95; }
 
@@ -185,7 +146,7 @@
 </head>
 
 <body>
-  <!-- Header -->
+  <!-- Header (exact match to D128 header) -->
   <header id="main-header">
     <div class="row">
       <div class="logo"><a href="index.html">VHCS</a></div>
@@ -206,7 +167,7 @@
   </header>
 
   <main id="site-main">
-    <!-- HERO (original background preserved) -->
+    <!-- HERO (centered content, no Learn More button) -->
     <section id="hero">
       <div class="hero-inner">
         <div class="row hero-content" style="margin:0;">
@@ -239,11 +200,7 @@
             </div>
           </div>
         </div>
-
-        <!-- Left-aligned CTA -->
-        <div id="more">
-          <a class="cta smoothscroll" href="#about"><i class="fa fa-angle-down"></i> Learn more</a>
-        </div>
+        <!-- (Removed the #more / Learn more button as requested) -->
       </div>
     </section>
 
@@ -318,7 +275,7 @@
       </div>
     </section>
 
-    <!-- READY TO JOIN (Enhanced) -->
+    <!-- READY TO JOIN -->
     <section class="darkband">
       <div class="container">
         <h2 class="section-title white-text" data-aos="fade-right">Ready to join?</h2>
@@ -408,7 +365,7 @@
     // AOS animations
     AOS.init({ duration: 800, once: true });
 
-    // Flexslider init (kept even if theme does it)
+    // Flexslider init
     $(window).on('load', function(){
       $('#hero-slider').flexslider({
         animation: 'fade',
