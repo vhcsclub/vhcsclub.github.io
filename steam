@@ -433,7 +433,7 @@
 
         <div class="buttons" data-aos="fade-up" data-aos-delay="160">
            <!-- UPDATED: Link + text -->
-           <a class="btn btn-primary smoothscroll" href="https://docs.google.com/forms/d/e/1FAIpQLSemunsPPPiyX08F3jow7CS_BHgpqAKZZ7wbPDZpLJKnRDJQJg/formResponse" target="_blank" rel="noopener">
+           <a class="btn btn-primary smoothscroll" href="https://docs.google.com/forms/d/e/1FAIpQLSemunsPPPiyX08F3jow7CS_BHgpqAKZZ7wbPDZpLJKnRDJQJg/viewform" target="_blank" rel="noopener">
              <i class="fa fa-angle-down" aria-hidden="true"></i>
              2026 Interest Form
            </a>
@@ -465,15 +465,8 @@
            </div>
            <div data-aos="fade-left" data-aos-delay="100">
              <div class="responsive-iframe">
-                <!-- UPDATED: replace YouTube with Google Drive preview -->
-                <iframe
-                  src="https://drive.google.com/file/d/1qlpFeVLuD6lNRhLGd5eSOGK-_6ISJXWK/preview?autoplay=1&mute=1"
-                  title="Showcase your STEAM skills video"
-                  allow="autoplay"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                  loading="lazy">
-                </iframe>
+                <!-- YouTube video -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/K2oikCPtIBI?si=JAHRHNq6hHWB_tfi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
              </div>
            </div>
          </div>
